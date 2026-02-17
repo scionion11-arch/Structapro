@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission, Vision & Core Values | StructaPro</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --white: #ffffff;
+        --blue-dark: #1a365d;
+        --blue-medium: #2c5282;
+        --blue-light: #4299e1;
+        --blue-soft: #ebf8ff;
+        --accent: #38b2ac;
+        --accent-light: #4fd1c7;
+        --text-dark: #2d3748;
+        --text-light: #718096;
+        --border: #e2e8f0;
+        --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 30px 60px rgba(0, 0, 0, 0.12);
+        --radius: 24px;
+        --radius-sm: 16px;
+
+        /* Theme colors */
+        --mission-primary: #4299e1;
+        --mission-light: #ebf8ff;
+        --mission-dark: #2c5282;
+
+        --vision-primary: #9f7aea;
+        --vision-light: #faf5ff;
+        --vision-dark: #553c9a;
+
+        --values-primary: #38b2ac;
+        --values-light: #e6fffa;
+        --values-dark: #234e52;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, #f8fafc 0%, #edf2f7 100%);
+        color: var(--text-dark);
+        line-height: 1.6;
+        padding: 40px 20px;
+      }
+
+      .sp-section {
+        margin: 0 auto;
+        padding: 60px 0;
+      }
+
+      /* Section Header */
+      .sp-section-header {
+        text-align: center;
+        margin-bottom: 70px;
+      }
+
+      .sp-section-eyebrow {
+        display: inline-block;
+        background: linear-gradient(135deg, var(--accent), var(--accent-light));
+        color: white;
+        padding: 10px 30px;
+        border-radius: 40px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 2px;
+        margin-bottom: 25px;
+        text-transform: uppercase;
+        box-shadow: 0 10px 25px rgba(56, 178, 172, 0.3);
+      }
+
+      .sp-section-title {
+        font-size: 3.2rem;
+        color: var(--blue-dark);
+        margin-bottom: 20px;
+        font-weight: 800;
+        line-height: 1.2;
+        letter-spacing: -0.5px;
+      }
+
+      .sp-section-subtitle {
+        font-size: 1.2rem;
+        color: var(--text-light);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Three Column Grid */
+      .sp-grid-three {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0px;
+        margin-top: 40px;
+      }
+
+      /* Base Card */
+      .sp-card {
+        overflow: hidden;
+        transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+      }
+
+      /* Card Header */
+      .sp-card-header {
+        padding: 40px 30px 30px;
+        position: relative;
+        overflow: hidden;
+        min-height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .sp-card-icon {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        color: white;
+        opacity: 0.2;
+        transition: all 0.5s ease;
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .sp-card:hover .sp-card-icon {
+        transform: rotate(15deg) scale(1.2);
+        opacity: 0.3;
+      }
+
+      .sp-card-label {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        padding: 6px 16px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        margin-bottom: 20px;
+        text-transform: uppercase;
+        align-self: flex-start;
+        backdrop-filter: blur(5px);
+      }
+
+      .sp-card-title {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: white;
+        margin-bottom: 15px;
+        line-height: 1.2;
+        position: relative;
+        z-index: 2;
+      }
+
+      .sp-card-subtitle {
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 1rem;
+        font-weight: 500;
+        position: relative;
+        z-index: 2;
+        max-width: 80%;
+      }
+
+      /* Card Content */
+      .sp-card-content {
+        padding: 40px 30px;
+        flex-grow: 1;
+        position: relative;
+        background: white;
+      }
+
+      .sp-card-content p {
+        font-size: 1.1rem;
+        line-height: 1.7;
+        color: var(--text-dark);
+        margin-bottom: 25px;
+      }
+
+      /* Mission Card */
+      .sp-card-mission .sp-card-header {
+        background: linear-gradient(
+          135deg,
+          var(--mission-primary),
+          var(--mission-dark)
+        );
+      }
+
+      .sp-card-mission .sp-highlight {
+        background: rgba(66, 153, 225, 0.05);
+        border-left: 4px solid var(--mission-primary);
+        padding: 20px;
+        border-radius: var(--radius-sm);
+        margin-top: 20px;
+      }
+
+      .sp-card-mission .sp-highlight i {
+        color: var(--mission-primary);
+        font-size: 1.2rem;
+        margin-right: 10px;
+      }
+
+      .sp-card-mission .sp-highlight-text {
+        font-style: italic;
+        font-weight: 500;
+        color: var(--mission-dark);
+      }
+
+      /* Vision Card */
+      .sp-card-vision .sp-card-header {
+        background: linear-gradient(
+          135deg,
+          var(--vision-primary),
+          var(--vision-dark)
+        );
+      }
+
+      .sp-card-vision .sp-highlight {
+        background: rgba(159, 122, 234, 0.05);
+        border-left: 4px solid var(--vision-primary);
+        padding: 20px;
+        border-radius: var(--radius-sm);
+        margin-top: 20px;
+      }
+
+      .sp-card-vision .sp-highlight i {
+        color: var(--vision-primary);
+        font-size: 1.2rem;
+        margin-right: 10px;
+      }
+
+      .sp-card-vision .sp-highlight-text {
+        font-style: italic;
+        font-weight: 500;
+        color: var(--vision-dark);
+      }
+
+      /* Values Card */
+      .sp-card-values .sp-card-header {
+        background: linear-gradient(
+          135deg,
+          var(--values-primary),
+          var(--values-dark)
+        );
+      }
+
+      .sp-card-values .sp-card-content {
+        background: var(--values-light);
+      }
+
+      /* Values List - Preview */
+      .sp-values-preview {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 20px;
+      }
+
+      .sp-preview-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 12px 15px;
+        background: white;
+        border-radius: var(--radius-sm);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+      }
+
+      .sp-preview-icon {
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(
+          135deg,
+          var(--values-primary),
+          var(--values-dark)
+        );
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 18px;
+        flex-shrink: 0;
+      }
+
+      .sp-preview-title {
+        font-size: 1.1rem;
+        font-weight: 700;
+        color: var(--values-dark);
+      }
+
+      /* See More Button */
+      .sp-see-more-btn {
+        width: 100%;
+        background: linear-gradient(
+          135deg,
+          var(--values-primary),
+          var(--values-dark)
+        );
+        color: white;
+        border: none;
+        padding: 15px 20px;
+        border-radius: var(--radius-sm);
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        box-shadow: 0 5px 15px rgba(56, 178, 172, 0.2);
+      }
+
+      .sp-see-more-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(56, 178, 172, 0.3);
+      }
+
+      .sp-see-more-btn i {
+        transition: transform 0.3s ease;
+      }
+
+      .sp-see-more-btn.active i {
+        transform: rotate(180deg);
+      }
+
+      /* Expanded Values List */
+      .sp-values-expanded {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+      }
+
+      .sp-values-expanded.show {
+        max-height: 1000px;
+        opacity: 1;
+      }
+
+      .sp-values-list {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .sp-value-item {
+        display: flex;
+        gap: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: var(--radius-sm);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .sp-value-item:hover {
+        transform: translateX(10px);
+        border-left: 4px solid var(--values-primary);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      }
+
+      .sp-value-icon {
+        width: 60px;
+        height: 60px;
+        background: linear-gradient(
+          135deg,
+          var(--values-primary),
+          var(--values-dark)
+        );
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 24px;
+        flex-shrink: 0;
+        transition: all 0.3s ease;
+      }
+
+      .sp-value-item:hover .sp-value-icon {
+        transform: scale(1.1) rotate(5deg);
+      }
+
+      .sp-value-content {
+        flex: 1;
+      }
+
+      .sp-value-title {
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--values-dark);
+        margin-bottom: 8px;
+      }
+
+      .sp-value-description {
+        font-size: 0.95rem;
+        color: var(--text-light);
+        line-height: 1.6;
+      }
+
+      /* Compact mode adjustments */
+      .sp-card-values .sp-card-content {
+        padding: 30px 25px;
+      }
+
+      .sp-card-values p {
+        font-size: 1rem;
+        margin-bottom: 20px;
+      }
+
+      /* Decorative Elements */
+      .sp-card-decoration {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        background: currentColor;
+        opacity: 0.05;
+        z-index: 1;
+      }
+
+      .sp-card-mission .sp-card-decoration {
+        bottom: -80px;
+        right: -80px;
+        background: var(--mission-primary);
+      }
+
+      .sp-card-vision .sp-card-decoration {
+        top: -80px;
+        left: -80px;
+        background: var(--vision-primary);
+      }
+
+      .sp-card-values .sp-card-decoration {
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: var(--values-primary);
+      }
+
+      /* Animation */
+      .sp-card {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: sp-fadeInUp 0.8s ease forwards;
+      }
+
+      .sp-card-mission {
+        animation-delay: 0.1s;
+      }
+      .sp-card-vision {
+        animation-delay: 0.2s;
+      }
+      .sp-card-values {
+        animation-delay: 0.3s;
+      }
+
+      @keyframes sp-fadeInUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Value items animation */
+      .sp-preview-item {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: sp-slideIn 0.4s ease forwards;
+      }
+
+      .sp-preview-item:nth-child(1) {
+        animation-delay: 0.4s;
+      }
+      .sp-preview-item:nth-child(2) {
+        animation-delay: 0.5s;
+      }
+      .sp-preview-item:nth-child(3) {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes sp-slideIn {
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .sp-grid-three {
+          gap: 25px;
+        }
+
+        .sp-card-title {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .sp-grid-three {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .sp-card-values {
+          grid-column: span 2;
+        }
+      }
+
+      @media (max-width: 768px) {
+        body {
+          padding: 20px 15px;
+        }
+
+        .sp-section-title {
+          font-size: 2.2rem;
+        }
+
+        .sp-grid-three {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .sp-card-values {
+          grid-column: auto;
+        }
+
+        .sp-card-header {
+          padding: 35px 25px 25px;
+          min-height: 180px;
+        }
+
+        .sp-card-title {
+          font-size: 2rem;
+        }
+
+        .sp-card-content {
+          padding: 30px 25px;
+        }
+
+        .sp-value-item {
+          padding: 15px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .sp-section-title {
+          font-size: 1.8rem;
+        }
+
+        .sp-card-title {
+          font-size: 1.8rem;
+        }
+
+        .sp-card-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 28px;
+          top: 20px;
+          right: 20px;
+        }
+
+        .sp-value-item {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .sp-value-icon {
+          margin: 0 auto;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="sp-section">
+      <!-- Section Header -->
+      <div class="sp-section-header">
+        <span class="sp-section-eyebrow">Our Foundation</span>
+        <h1 class="sp-section-title">Mission, Vision & Core Values</h1>
+        <p class="sp-section-subtitle">
+          Guiding principles that shape our company culture and drive us towards
+          excellence in construction advisory
+        </p>
+      </div>
+
+      <!-- Three Column Grid -->
+      <div class="sp-grid-three">
+        <!-- Mission Card -->
+        <div class="sp-card sp-card-mission">
+          <div class="sp-card-header">
+            <div class="sp-card-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <span class="sp-card-label">Our Purpose</span>
+            <h2 class="sp-card-title">Mission</h2>
+            <p class="sp-card-subtitle">
+              What we do every day to serve our clients
+            </p>
+            <div class="sp-card-decoration"></div>
+          </div>
+
+          <div class="sp-card-content">
+            <p>
+              To empower developers, contractors, and government agencies with
+              data-driven advisory services that mitigate risk and maximise
+              structural efficiency across Ghana and West Africa.
+            </p>
+
+            <p>
+              We are committed to delivering exceptional value by combining
+              international best practices with deep local insight, ensuring
+              every project meets the highest standards of quality and
+              compliance.
+            </p>
+
+            <div class="sp-highlight">
+              <i class="fas fa-quote-left"></i>
+              <span class="sp-highlight-text">
+                "To create construction solutions that make the complex simple,
+                the challenging achievable, and the vision reality for every
+                client."
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision Card -->
+        <div class="sp-card sp-card-vision">
+          <div class="sp-card-header">
+            <div class="sp-card-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <span class="sp-card-label">Our Aspiration</span>
+            <h2 class="sp-card-title">Vision</h2>
+            <p class="sp-card-subtitle">
+              Where we're headed and what we aspire to become
+            </p>
+            <div class="sp-card-decoration"></div>
+          </div>
+
+          <div class="sp-card-content">
+            <p>
+              To be West Africa's most trusted architectural and structural
+              advisory firm, recognized for unwavering integrity, engineering
+              excellence, and transformative impact on the built environment.
+            </p>
+
+            <p>
+              We envision a future where every structure we touch stands as a
+              testament to quality, safety, and innovation—contributing to
+              sustainable development and improved quality of life.
+            </p>
+
+            <div class="sp-highlight">
+              <i class="fas fa-quote-left"></i>
+              <span class="sp-highlight-text">
+                "To shape a future where construction excellence serves
+                communities, businesses thrive through quality infrastructure,
+                and progress benefits all."
+              </span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Core Values Card -->
+        <div class="sp-card sp-card-values">
+          <div class="sp-card-header">
+            <div class="sp-card-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <span class="sp-card-label">Our Principles</span>
+            <h2 class="sp-card-title">Core Values</h2>
+            <p class="sp-card-subtitle">
+              The principles that guide our decisions and actions
+            </p>
+            <div class="sp-card-decoration"></div>
+          </div>
+
+          <div class="sp-card-content">
+            <p>
+              Our values are the foundation of our company culture—the compass
+              that guides every decision, relationship, and project we
+              undertake.
+            </p>
+
+            <!-- Preview of first 3 values -->
+            <div class="sp-values-preview">
+              <div class="sp-preview-item">
+                <div class="sp-preview-icon">
+                  <i class="fas fa-ruler-combined"></i>
+                </div>
+                <span class="sp-preview-title">Precision</span>
+              </div>
+
+              <div class="sp-preview-item">
+                <div class="sp-preview-icon">
+                  <i class="fas fa-map-marked-alt"></i>
+                </div>
+                <span class="sp-preview-title">Local Insight</span>
+              </div>
+
+              <div class="sp-preview-item">
+                <div class="sp-preview-icon">
+                  <i class="fas fa-handshake"></i>
+                </div>
+                <span class="sp-preview-title">Accountability</span>
+              </div>
+            </div>
+
+            <!-- See More Button -->
+            <button class="sp-see-more-btn" id="seeMoreBtn">
+              <span><i class="fas fa-chevron-down"></i> See All 4 Values</span>
+              <i class="fas fa-chevron-down"></i>
+            </button>
+
+            <!-- Expanded Values List -->
+            <div class="sp-values-expanded" id="expandedValues">
+              <div class="sp-values-list">
+                <!-- Value 1 -->
+                <div class="sp-value-item">
+                  <div class="sp-value-icon">
+                    <i class="fas fa-ruler-combined"></i>
+                  </div>
+                  <div class="sp-value-content">
+                    <h4 class="sp-value-title">Precision</h4>
+                    <p class="sp-value-description">
+                      We believe in the "measure twice, cut once" philosophy,
+                      ensuring accuracy in every calculation and specification.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Value 2 -->
+                <div class="sp-value-item">
+                  <div class="sp-value-icon">
+                    <i class="fas fa-map-marked-alt"></i>
+                  </div>
+                  <div class="sp-value-content">
+                    <h4 class="sp-value-title">Local Insight</h4>
+                    <p class="sp-value-description">
+                      Tailoring global engineering standards to Ghana's unique
+                      climate, soil conditions, and regulatory environment.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Value 3 -->
+                <div class="sp-value-item">
+                  <div class="sp-value-icon">
+                    <i class="fas fa-handshake"></i>
+                  </div>
+                  <div class="sp-value-content">
+                    <h4 class="sp-value-title">Accountability</h4>
+                    <p class="sp-value-description">
+                      Taking full ownership of the advice we provide and
+                      standing behind every recommendation we make.
+                    </p>
+                  </div>
+                </div>
+
+                <!-- Value 4 -->
+                <div class="sp-value-item">
+                  <div class="sp-value-icon">
+                    <i class="fas fa-shield-alt"></i>
+                  </div>
+                  <div class="sp-value-content">
+                    <h4 class="sp-value-title">Integrity</h4>
+                    <p class="sp-value-description">
+                      Acting with honesty and transparency in all client
+                      interactions, building trust that lasts for generations.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Decorative Bottom Quote -->
+      <div style="text-align: center; margin-top: 80px; padding: 20px">
+        <p
+          style="
+            color: var(--text-light);
+            font-size: 1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+          "
+        >
+          <i
+            class="fas fa-chevron-down"
+            style="margin: 0 10px; opacity: 0.5"
+          ></i>
+          These principles guide everything we do
+          <i
+            class="fas fa-chevron-down"
+            style="margin: 0 10px; opacity: 0.5"
+          ></i>
+        </p>
+      </div>
+    </section>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const cards = document.querySelectorAll(".sp-card");
+        const seeMoreBtn = document.getElementById("seeMoreBtn");
+        const expandedValues = document.getElementById("expandedValues");
+
+        // Intersection Observer for scroll animations
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = "running";
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+            rootMargin: "0px 0px -50px 0px",
+          },
+        );
+
+        cards.forEach((card) => {
+          card.style.animationPlayState = "paused";
+          observer.observe(card);
+        });
+
+        // Hover effects enhancement
+        cards.forEach((card) => {
+          card.addEventListener("mouseenter", function () {
+            this.style.zIndex = "10";
+
+            const icon = this.querySelector(".sp-card-icon");
+            if (icon) {
+              icon.style.transform = "rotate(15deg) scale(1.2)";
+            }
+          });
+
+          card.addEventListener("mouseleave", function () {
+            this.style.zIndex = "1";
+
+            const icon = this.querySelector(".sp-card-icon");
+            if (icon) {
+              icon.style.transform = "rotate(0deg) scale(1)";
+            }
+          });
+        });
+
+        // See More functionality
+        if (seeMoreBtn && expandedValues) {
+          seeMoreBtn.addEventListener("click", function () {
+            const isExpanded = expandedValues.classList.contains("show");
+
+            if (!isExpanded) {
+              expandedValues.classList.add("show");
+              this.classList.add("active");
+              this.innerHTML =
+                '<span><i class="fas fa-chevron-up"></i> Show Less</span><i class="fas fa-chevron-up"></i>';
+
+              // Animate value items when expanded
+              const valueItems = document.querySelectorAll(".sp-value-item");
+              valueItems.forEach((item, index) => {
+                item.style.opacity = "0";
+                item.style.transform = "translateX(-20px)";
+                setTimeout(
+                  () => {
+                    item.style.transition = "all 0.4s ease";
+                    item.style.opacity = "1";
+                    item.style.transform = "translateX(0)";
+                  },
+                  100 + index * 100,
+                );
+              });
+            } else {
+              expandedValues.classList.remove("show");
+              this.classList.remove("active");
+              this.innerHTML =
+                '<span><i class="fas fa-chevron-down"></i> See All 4 Values</span><i class="fas fa-chevron-down"></i>';
+            }
+          });
+        }
+
+        // Value items hover effects
+        const valueItems = document.querySelectorAll(".sp-value-item");
+        valueItems.forEach((item) => {
+          item.addEventListener("mouseenter", function () {
+            const icon = this.querySelector(".sp-value-icon");
+            if (icon) {
+              icon.style.transform = "scale(1.1) rotate(5deg)";
+              icon.style.transition = "all 0.3s ease";
+            }
+          });
+
+          item.addEventListener("mouseleave", function () {
+            const icon = this.querySelector(".sp-value-icon");
+            if (icon) {
+              icon.style.transform = "scale(1) rotate(0)";
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

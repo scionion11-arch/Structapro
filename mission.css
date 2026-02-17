@@ -1,0 +1,565 @@
+:root {
+  --white: #ffffff;
+  --blue-dark: #1a365d;
+  --blue-medium: #2c5282;
+  --blue-light: #4299e1;
+  --blue-soft: #ebf8ff;
+  --accentmvp: #38b2ac;
+  --accentmvp-light: #4fd1c7;
+  --text-dark: #2d3748;
+  --text-light: #718096;
+  --border: #e2e8f0;
+  --shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 30px 60px rgba(0, 0, 0, 0.12);
+  --radius: 24px;
+  --radius-sm: 16px;
+
+  /* Theme colors */
+  --mission-primary: #4299e1;
+  --mission-light: #ebf8ff;
+  --mission-dark: #2c5282;
+
+  --vision-primary: #9f7aea;
+  --vision-light: #faf5ff;
+  --vision-dark: #553c9a;
+
+  --values-primary: #38b2ac;
+  --values-light: #e6fffa;
+  --values-dark: #234e52;
+}
+
+.sp-sectionx {
+  margin: 0 auto;
+  padding: 60px 0;
+}
+
+/* Section Header */
+.sp-sectionx-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+
+.sp-sectionx-eyebrow {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--accentmvp), var(--accentmvp-light));
+  color: white;
+  padding: 10px 30px;
+  border-radius: 40px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 2px;
+  margin-bottom: 25px;
+  text-transform: uppercase;
+  box-shadow: 0 10px 25px rgba(56, 178, 172, 0.3);
+}
+
+.sp-sectionx-title {
+  font-size: 3.2rem;
+  color: var(--blue-dark);
+  margin-bottom: 20px;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.5px;
+}
+
+.sp-sectionx-subtitle {
+  font-size: 1.2rem;
+  color: #718096;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Three Column Grid */
+.sp-grid-three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0px;
+  margin-top: 40px;
+}
+
+/* Base Card */
+.sp-card {
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Card Header */
+.sp-card-header {
+  padding: 40px 30px 30px;
+  position: relative;
+  overflow: hidden;
+  min-height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sp-card-icon {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  color: white;
+  opacity: 0.2;
+  transition: all 0.5s ease;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.sp-card:hover .sp-card-icon {
+  transform: rotate(15deg) scale(1.2);
+  opacity: 0.3;
+}
+
+.sp-card-label {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  padding: 6px 16px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  align-self: flex-start;
+  backdrop-filter: blur(5px);
+}
+
+.sp-card-titlex {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: white;
+  margin-bottom: 15px;
+  line-height: 1.2;
+  position: relative;
+  z-index: 2;
+}
+
+.sp-card-subtitle {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 1rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+  max-width: 80%;
+}
+
+/* Card Content */
+.sp-card-content {
+  padding: 40px 30px;
+  flex-grow: 1;
+  position: relative;
+  background: white;
+}
+
+.sp-card-content p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-dark);
+  margin-bottom: 25px;
+}
+
+/* Mission Card */
+.sp-card-mission .sp-card-header {
+  background: linear-gradient(
+    135deg,
+    var(--mission-primary),
+    var(--mission-dark)
+  );
+}
+
+.sp-card-mission .sp-highlight {
+  background: rgba(66, 153, 225, 0.05);
+  border-left: 4px solid var(--mission-primary);
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  margin-top: 20px;
+}
+
+.sp-card-mission .sp-highlight i {
+  color: var(--mission-primary);
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.sp-card-mission .sp-highlight-text {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--mission-dark);
+}
+
+/* Vision Card */
+.sp-card-vision .sp-card-header {
+  background: linear-gradient(
+    135deg,
+    var(--vision-primary),
+    var(--vision-dark)
+  );
+}
+
+.sp-card-vision .sp-highlight {
+  background: rgba(159, 122, 234, 0.05);
+  border-left: 4px solid var(--vision-primary);
+  padding: 20px;
+  border-radius: var(--radius-sm);
+  margin-top: 20px;
+}
+
+.sp-card-vision .sp-highlight i {
+  color: var(--vision-primary);
+  font-size: 1.2rem;
+  margin-right: 10px;
+}
+
+.sp-card-vision .sp-highlight-text {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--vision-dark);
+}
+
+/* Values Card */
+.sp-card-values .sp-card-header {
+  background: linear-gradient(
+    135deg,
+    var(--values-primary),
+    var(--values-dark)
+  );
+}
+
+.sp-card-values .sp-card-content {
+  background: var(--values-light);
+}
+
+/* Values List - Preview */
+.sp-values-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.sp-preview-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 15px;
+  background: white;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.sp-preview-icon {
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(
+    135deg,
+    var(--values-primary),
+    var(--values-dark)
+  );
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.sp-preview-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--values-dark);
+}
+
+/* See More Button */
+.sp-see-more-btn {
+  width: 100%;
+  background: linear-gradient(
+    135deg,
+    var(--values-primary),
+    var(--values-dark)
+  );
+  color: white;
+  border: none;
+  padding: 15px 20px;
+  border-radius: var(--radius-sm);
+  font-weight: 700;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  box-shadow: 0 5px 15px rgba(56, 178, 172, 0.2);
+}
+
+.sp-see-more-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 25px rgba(56, 178, 172, 0.3);
+}
+
+.sp-see-more-btn i {
+  transition: transform 0.3s ease;
+}
+
+.sp-see-more-btn.active i {
+  transform: rotate(180deg);
+}
+
+/* Expanded Values List */
+.sp-values-expanded {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  opacity: 0;
+}
+
+.sp-values-expanded.show {
+  max-height: 1000px;
+  opacity: 1;
+}
+
+.sp-values-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sp-value-item {
+  display: flex;
+  gap: 20px;
+  padding: 15px;
+  background: white;
+  border-radius: var(--radius-sm);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border-left: 4px solid transparent;
+}
+
+.sp-value-item:hover {
+  transform: translateX(10px);
+  border-left: 4px solid var(--values-primary);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+.sp-value-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(
+    135deg,
+    var(--values-primary),
+    var(--values-dark)
+  );
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.sp-value-item:hover .sp-value-icon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.sp-value-content {
+  flex: 1;
+}
+
+.sp-value-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--values-dark);
+  margin-bottom: 8px;
+}
+
+.sp-value-description {
+  font-size: 0.95rem;
+  color: var(--text-light);
+  line-height: 1.6;
+}
+
+/* Compact mode adjustments */
+.sp-card-values .sp-card-content {
+  padding: 30px 25px;
+}
+
+.sp-card-values p {
+  font-size: 1rem;
+  margin-bottom: 20px;
+}
+
+/* Decorative Elements */
+.sp-card-decoration {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: currentColor;
+  opacity: 0.05;
+  z-index: 1;
+}
+
+.sp-card-mission .sp-card-decoration {
+  bottom: -80px;
+  right: -80px;
+  background: var(--mission-primary);
+}
+
+.sp-card-vision .sp-card-decoration {
+  top: -80px;
+  left: -80px;
+  background: var(--vision-primary);
+}
+
+.sp-card-values .sp-card-decoration {
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--values-primary);
+}
+
+/* Animation */
+.sp-card {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: sp-fadeInUp 0.8s ease forwards;
+}
+
+.sp-card-mission {
+  animation-delay: 0.1s;
+}
+.sp-card-vision {
+  animation-delay: 0.2s;
+}
+.sp-card-values {
+  animation-delay: 0.3s;
+}
+
+@keyframes sp-fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Value items animation */
+.sp-preview-item {
+  opacity: 0;
+  transform: translateX(-20px);
+  animation: sp-slideIn 0.4s ease forwards;
+}
+
+.sp-preview-item:nth-child(1) {
+  animation-delay: 0.4s;
+}
+.sp-preview-item:nth-child(2) {
+  animation-delay: 0.5s;
+}
+.sp-preview-item:nth-child(3) {
+  animation-delay: 0.6s;
+}
+
+@keyframes sp-slideIn {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+  .sp-grid-three {
+    gap: 25px;
+  }
+
+  .sp-card-title {
+    font-size: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .sp-grid-three {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .sp-card-values {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 20px 15px;
+  }
+
+  .sp-sectionx-title {
+    font-size: 2.2rem;
+  }
+
+  .sp-grid-three {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .sp-card-values {
+    grid-column: auto;
+  }
+
+  .sp-card-header {
+    padding: 35px 25px 25px;
+    min-height: 180px;
+  }
+
+  .sp-card-title {
+    font-size: 2rem;
+  }
+
+  .sp-card-content {
+    padding: 30px 25px;
+  }
+
+  .sp-value-item {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sp-sectionx-title {
+    font-size: 1.8rem;
+  }
+
+  .sp-card-title {
+    font-size: 1.8rem;
+  }
+
+  .sp-card-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+    top: 20px;
+    right: 20px;
+  }
+
+  .sp-value-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .sp-value-icon {
+    margin: 0 auto;
+  }
+}

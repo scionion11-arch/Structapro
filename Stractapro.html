@@ -1,0 +1,667 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>StructaPro | Construction Advisory EOI</title>
+    <style>
+      :root {
+        --primary: #2c5282; /* From chart-OG: blue-dark */
+        --accent: #63b3ed; /* From chart-OG: blue-light */
+        --bg: #f7fafc; /* From chart-OG: header-bg */
+        --text: #2d3748; /* From chart-OG: text-main */
+        --white: #ffffff;
+        --blue-dark: #2c5282;
+        --blue-light: #63b3ed;
+        --grid-line: #e2e8f0;
+        --header-bg: #f7fafc;
+        --text-main: #2d3748;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        background-color: #edf2f7;
+        color: var(--text);
+        line-height: 1.6;
+      }
+
+      /* Navigation */
+      nav {
+        background: var(--primary);
+        padding: 1rem 5%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: white;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+      }
+
+      .logo {
+        font-weight: 800;
+        font-size: 1.5rem;
+        letter-spacing: 1px;
+      }
+
+      /* Hero Section */
+      .hero {
+        background:
+          linear-gradient(rgba(44, 82, 130, 0.9), rgba(44, 82, 130, 0.9)),
+          url("https://images.unsplash.com/photo-1541888946425-d81bb19480c5?auto=format&fit=crop&w=1350&q=80");
+        background-size: cover;
+        color: white;
+        padding: 100px 10%;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 20px;
+      }
+      .hero p {
+        font-size: 1.2rem;
+        max-width: 800px;
+        margin: 0 auto 30px;
+        opacity: 0.9;
+      }
+
+      /* Content Sections */
+      .section {
+        padding: 60px 10%;
+      }
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      h2 {
+        color: var(--primary);
+        text-align: center;
+        margin-bottom: 40px;
+        position: relative;
+      }
+      h2::after {
+        content: "";
+        width: 50px;
+        height: 4px;
+        background: var(--accent);
+        position: absolute;
+        bottom: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Expertise Grid */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+      }
+
+      .card {
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        border-top: 5px solid var(--accent);
+        transition: transform 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+      .card h3 {
+        color: var(--primary);
+        margin-top: 0;
+      }
+
+      /* Staff Timeline Integration (Inherited from chart-OG) 
+      .gantt-wrapper {
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        overflow-x: auto;
+        box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .gantt-grid {
+        display: grid;
+        grid-template-columns: 180px 150px 280px repeat(17, 1fr) 80px;
+        border: 1px solid #e2e8f0;
+        min-width: 1400px;
+      }
+
+      .header-cell {
+        background: var(--bg);
+        font-weight: 700;
+        font-size: 0.75rem;
+        padding: 12px;
+        border-right: 1px solid #e2e8f0;
+        border-bottom: 2px solid #e2e8f0;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .bar {
+        height: 18px;
+        border-radius: 4px;
+        background: var(--primary);
+        margin: 5px 0;
+      }
+      .bar.part {
+        background: var(--accent);
+      }
+*/
+
+      .container {
+        max-width: 1600px;
+        margin: 0 auto;
+        background: white;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: var(--text-main);
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      /* The Grid: 3 Text Cols + 17 Month Cols + 1 Total Col = 21 Columns total */
+      .gantt-grid {
+        display: grid;
+        grid-template-columns: 180px 150px 280px repeat(17, 1fr) 80px;
+        border: 1px solid var(--grid-line);
+        overflow-x: auto;
+      }
+
+      .header {
+        background: var(--header-bg);
+        font-weight: 700;
+        font-size: 0.75rem;
+        padding: 12px 5px;
+        border-right: 1px solid var(--grid-line);
+        border-bottom: 2px solid var(--grid-line);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-transform: uppercase;
+        color: #4a5568;
+      }
+
+      .cell {
+        border-right: 1px solid var(--grid-line);
+        border-bottom: 1px solid var(--grid-line);
+        padding: 8px;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        background: white;
+      }
+
+      /* Bar container spanning the timeline section */
+      .bar-area {
+        grid-column: 4 / 21; /* Spans across all 17 month columns */
+        display: grid;
+        grid-template-columns: repeat(17, 1fr);
+        padding: 0;
+        position: relative;
+        background-color: #fff;
+      }
+
+      /* Subtle vertical lines for the months */
+      .bar-area::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image: linear-gradient(
+          to right,
+          var(--grid-line) 1px,
+          transparent 1px
+        );
+        background-size: calc(100% / 17) 100%;
+        pointer-events: none;
+      }
+
+      /* The Bars */
+      .bar {
+        height: 20px;
+        margin: auto 2px;
+        border-radius: 4px;
+        z-index: 1;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+      }
+
+      .full {
+        background: var(--blue-dark);
+      }
+      .part {
+        background: var(--blue-light);
+      }
+
+      /* Legend */
+      .legend {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        margin-bottom: 20px;
+      }
+      .legend-item {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 0.9rem;
+      }
+      .swatch {
+        width: 24px;
+        height: 12px;
+        border-radius: 3px;
+      }
+
+      footer {
+        background: var(--text);
+        color: white;
+        text-align: center;
+        padding: 40px;
+        margin-top: 60px;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="logo">STRUCTAPRO</div>
+      <div>Consultancy | Engineering | Oversight</div>
+    </nav>
+
+    <section class="hero">
+      <div class="container">
+        <h1>Elevating Built Environments</h1>
+        <p>
+          A premier Ghanaian-based consultancy providing technical clarity and
+          strategic foresight to turn complex blueprints into enduring
+          landmarks[cite: 147, 148].
+        </p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <h2>Our Mission & Vision</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Mission</h3>
+            <p>
+              Empowering developers and government agencies with data-driven
+              advisory to mitigate risk and maximize structural efficiency[cite:
+              106].
+            </p>
+          </div>
+          <div class="card">
+            <h3>Vision</h3>
+            <p>
+              To be West Africa's most trusted structural advisory firm,
+              recognized for integrity and engineering excellence[cite: 107].
+            </p>
+          </div>
+          <div class="card">
+            <h3>Precision</h3>
+            <p>
+              We believe in the "measure twice, cut once" philosophy, tailoring
+              global standards to local Ghanaian conditions[cite: 108, 109].
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="background: #fff">
+      <h2>Projected Resource Utilization</h2>
+      <p style="text-align: center; margin-bottom: 30px">
+        Technical staff allocation across the 17-month project lifecycle.
+      </p>
+
+      <div class="legend">
+        <div class="legend-item">
+          <div class="swatch full"></div>
+          <strong>Full-Time</strong>
+        </div>
+        <div class="legend-item">
+          <div class="swatch part"></div>
+          <strong>Part-Time</strong>
+        </div>
+      </div>
+
+      < class="container">
+      <div class="gantt-grid">
+        <div class="header">Name</div>
+        <div class="header">Position</div>
+        <div class="header">Key Responsibilities</div>
+        <div class="header" style="grid-column: span 6; background: #ebf8ff">
+          Pre-Contract
+        </div>
+        <div class="header" style="grid-column: span 5; background: #fffaf0">
+          Contract
+        </div>
+        <div class="header" style="grid-column: span 6; background: #f0fff4">
+          Post-Completion
+        </div>
+        <div class="header">Total</div>
+
+        <div class="header" style="grid-column: 1/4">
+          Activities & Timeline (Months)
+        </div>
+        <script>
+          for (let i = 1; i <= 17; i++) {
+            document.write(`<div class="header">${i}</div>`);
+          }
+        </script>
+        <div class="header">Days</div>
+
+        <div class="cell"><strong>YEVUGAH</strong>, Leif</div>
+        <div class="cell">Project Manager</div>
+        <div class="cell">
+          Lead liaison and staff lead; delivers Inception/Final reports, design
+          critiques and schedule oversight.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 1 / span 2"></div>
+          <div class="bar full" style="grid-column: 4 / span 3"></div>
+          <div class="bar part" style="grid-column: 7 / span 5"></div>
+          <div class="bar part" style="grid-column: 13 / span 1"></div>
+          <div class="bar part" style="grid-column: 17 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>110</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>77</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>PAYNE</strong>, Darlington</div>
+        <div class="cell">Architect</div>
+        <div class="cell">
+          Manages architectural contracts and design economics; leads site
+          investigations and as-built documentation.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 1 / span 4"></div>
+          <div class="bar part" style="grid-column: 7 / span 2"></div>
+          <div class="bar part" style="grid-column: 10 / span 3"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>88</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>55</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>OWUSU</strong>, N. Nana Senior</div>
+        <div class="cell">Architect</div>
+        <div class="cell">
+          Manages architectural contracts and design economics; leads site
+          investigations and as-built documentation.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 1 / span 4"></div>
+          <div class="bar part" style="grid-column: 7 / span 2"></div>
+          <div class="bar part" style="grid-column: 10 / span 2"></div>
+          <div class="bar part" style="grid-column: 13 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>88</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>55</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>ADOMAKO</strong>, Francis Junior</div>
+        <div class="cell">Civil Engineer</div>
+        <div class="cell">
+          Structural design Lead; oversees material testing (concrete/steel),
+          road works and technical O&M data.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 2 / span 3"></div>
+          <div class="bar full" style="grid-column: 7 / span 3"></div>
+          <div class="bar part" style="grid-column: 10 / span 1"></div>
+          <div class="bar full" style="grid-column: 11 / span 1"></div>
+          <div class="bar part" style="grid-column: 16 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>154</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>22</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>ASARE</strong>, Kings</div>
+        <div class="cell">Quantity Surveyor</div>
+        <div class="cell">
+          Financial lead; manages cost estimates, BoQs, valuation certificates
+          and final financial reconciliation.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 4 / span 8"></div>
+          <div class="bar full" style="grid-column: 14 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>198</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>OHENE</strong>, Michael</div>
+        <div class="cell">Quantity Surveyor</div>
+        <div class="cell">
+          Financial lead; manages cost estimates, BoQs, valuation certificates
+          and final financial reconciliation.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 4 / span 8"></div>
+          <div class="bar full" style="grid-column: 15 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>198</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell">
+          <strong>ADOMAKO SARPONG</strong>, Abena Frimpomaa
+        </div>
+        <div class="cell">Geotechnical Engineer</div>
+        <div class="cell">
+          Geotechnical lead; conducts soil investigations, compaction tests,
+          foundation assessments and maintains geotechnical and as-built
+          records.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 1 / span 2"></div>
+          <div class="bar full" style="grid-column: 4 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>66</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>OPOKU-WARE</strong>, Aduse</div>
+        <div class="cell">Clerk of Works</div>
+        <div class="cell">
+          Quality Assurance lead; provides daily site inspections, progress
+          reporting and latent defect monitoring.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 6 / span 7"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>154</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>0</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>SAGOE</strong>, Kwabena</div>
+        <div class="cell">Structural Engineer</div>
+        <div class="cell">
+          Buildability Auditor; provides technical supervision and verifies
+          structural integrity of the physical framework.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 2 / span 3"></div>
+          <div class="bar full" style="grid-column: 7 / span 3"></div>
+          <div class="bar part" style="grid-column: 10 / span 1"></div>
+          <div class="bar full" style="grid-column: 11 / span 1"></div>
+          <div class="bar part" style="grid-column: 16 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>154</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>22</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>ACQUAH</strong>, Nana Benyi</div>
+        <div class="cell">Land Surveyor</div>
+        <div class="cell">
+          Manages topographic surveys and legal plats; supports site selection,
+          bidding and post-completion audits.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 1 / span 2"></div>
+          <div class="bar full" style="grid-column: 7 / span 1"></div>
+          <div class="bar part" style="grid-column: 8 / span 1"></div>
+          <div class="bar part" style="grid-column: 15 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>66</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>22</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>BOATEY</strong>, Desmond Kwao</div>
+        <div class="cell">Mechanical Engineer</div>
+        <div class="cell">
+          Delivers plumbing/mechanical production designs; leads system
+          commissioning and maintenance manuals.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 3 / span 3"></div>
+          <div class="bar full" style="grid-column: 8 / span 3"></div>
+          <div class="bar part" style="grid-column: 16 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>132</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>22</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="cell"><strong>BOAKYE</strong>, Salomey Afriyie</div>
+        <div class="cell">Electrical Engineer</div>
+        <div class="cell">
+          Manages electrical design and installation; leads system testing,
+          commissioning and operational handover.
+        </div>
+        <div class="bar-area">
+          <div class="bar full" style="grid-column: 4 / span 1"></div>
+          <div class="bar full" style="grid-column: 9 / span 3"></div>
+          <div class="bar part" style="grid-column: 15 / span 1"></div>
+        </div>
+        <div class="cell" style="justify-content: center">
+          <div class="resource-summary">
+            <div class="legend-item">
+              <div class="swatch full"></div>
+              <strong>88</strong>
+            </div>
+            <div class="legend-item">
+              <div class="swatch part"></div>
+              <strong>11</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>
+        &copy; 2024 StructaPro Construction Advisory | www.structapro.com [cite:
+        141]
+      </p>
+      <p>Accra | Kumasi | West Africa</p>
+    </footer>
+  </body>
+</html>

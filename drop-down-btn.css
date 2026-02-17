@@ -1,0 +1,142 @@
+/* Dropdown Container - Positioned relative to button */
+.dropdown-container {
+  position: relative;
+}
+
+/* Dropdown Menu - LEFT ALIGNED so it doesn't go off screen */
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: auto;
+  min-width: 280px;
+  background: var(--white);
+  border-radius: 12px;
+  box-shadow: var(--shadow-lg);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 1001;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+}
+
+.dropdown-menu.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Arrow pointing to button */
+.dropdown-arrow {
+  position: absolute;
+  top: -6px;
+  left: 24px;
+  width: 12px;
+  height: 12px;
+  background: var(--white);
+  transform: rotate(45deg);
+  border-left: 1px solid var(--border-color);
+  border-top: 1px solid var(--border-color);
+}
+
+/* Dropdown Content */
+.dropdown-header {
+  padding: 20px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-color),
+    var(--primary-dark)
+  );
+  color: var(--white);
+}
+
+.dropdown-header h3 {
+  font-size: 1.2rem;
+  margin-bottom: 5px;
+}
+
+.dropdown-header p {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.dropdown-items {
+  padding: 12px 0;
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  text-decoration: none;
+  color: var(--text-dark);
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+}
+
+.dropdown-item:hover {
+  background: var(--bg-light);
+  border-left-color: var(--primary-color);
+  padding-left: 24px;
+}
+
+.dropdown-item i {
+  width: 20px;
+  text-align: center;
+  color: var(--primary-color);
+  font-size: 1rem;
+}
+
+.dropdown-item span {
+  font-weight: 500;
+  font-size: 0.95rem;
+  flex-grow: 1;
+}
+
+.dropdown-item .badge {
+  background: #e0e7ff;
+  color: var(--primary-color);
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 20px;
+  font-weight: 600;
+}
+
+.dropdown-footer {
+  padding: 15px 20px;
+  background: var(--bg-light);
+  text-align: center;
+  border-top: 1px solid var(--border-color);
+}
+
+.dropdown-footer a {
+  color: var(--text-light);
+  font-size: 0.9rem;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.dropdown-footer a:hover {
+  color: var(--primary-color);
+}
+
+/* Overlay to close dropdown when clicking outside */
+.dropdown-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: transparent;
+  z-index: 1000;
+  display: none;
+}
+
+.dropdown-overlay.active {
+  display: block;
+}

@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Organization Structure</title>
+
+    <style>
+      :root {
+        --blue-dark: #2c5282;
+        --blue-light: #63b3ed;
+        --bg: #edf2f7;
+        --grid: #e2e8f0;
+        --white: #fff;
+        --text: #2d3748;
+      }
+
+      body {
+        font-family: "Segoe UI", sans-serif;
+        background: var(--bg);
+        margin: 0;
+        padding: 80px 8%;
+        color: var(--text);
+      }
+
+      /* ===== Title ===== */
+      .section-title {
+        text-align: center;
+        font-size: 2.3rem;
+        font-weight: 700;
+        color: var(--blue-dark);
+        margin-bottom: 60px;
+      }
+
+      /* =====================================
+   CEO pro
+===================================== */
+      .ceo {
+        background: var(--blue-dark);
+        color: white;
+        max-width: 420px;
+        margin: 0 auto 70px;
+        padding: 40px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+      }
+
+      /* CEO image bigger */
+      .ceo .avatar {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: #d9d9d9;
+        overflow: hidden;
+        border: 4px solid white;
+      }
+
+      .ceo .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* =====================================
+   TEAM GRID
+===================================== */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+      }
+
+      /* =====================================
+   CARDS
+===================================== */
+      .pro {
+        background: var(--white);
+        border: 1px solid var(--grid);
+        padding: 30px 20px;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+      }
+
+      .pro:hover {
+        transform: translateY(-6px);
+      }
+
+      /* Avatar space */
+      .avatar {
+        width: 95px;
+        height: 95px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        background: #d9d9d9; /* placeholder color */
+        overflow: hidden;
+      }
+
+      /* real image fit */
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Name */
+      .name {
+        font-weight: 700;
+        color: var(--blue-dark);
+        margin-bottom: 6px;
+      }
+
+      /* Role */
+      .role {
+        font-size: 0.9rem;
+        color: #555;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section>
+      <h1 class="section-title">The Organization</h1>
+
+      <!-- ================= CEO ================= -->
+      <div class="ceo">
+        <div class="avatar">
+          <!-- Replace with real image -->
+          <img src="XOXO.png" />
+        </div>
+        <h2>LEIF SEYRA KORBLAH</h2>
+        <p>CHIEF EXECUTIVE OFFICER</p>
+      </div>
+
+      <!-- ================= TEAM ================= -->
+      <div class="team-grid">
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">NTIAMOAH NANA SNR.</div>
+          <div class="role">Director</div>
+        </div>
+
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">KINGS KWAME KYERE</div>
+          <div class="role">General Manager</div>
+        </div>
+
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">SALOMEY AFRIYIE</div>
+          <div class="role">Director of Finance & Administration</div>
+        </div>
+
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">NANA BENYI</div>
+          <div class="role">Director of Business Development</div>
+        </div>
+
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">DESMOND BOATEY</div>
+          <div class="role">Director of Operations</div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

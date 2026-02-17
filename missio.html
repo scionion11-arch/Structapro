@@ -1,0 +1,611 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission, Vision & Values - Color Planes Design</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --white: #ffffff;
+        --blue-dark: #1e293b;
+        --text-light: #64748b;
+        --border: #e2e8f0;
+        --shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.1);
+        --radius: 20px;
+
+        /* Theme colors for each section */
+        --mission-primary: #4299e1;
+        --mission-light: #ebf8ff;
+        --mission-dark: #2c5282;
+
+        --vision-primary: #9f7aea;
+        --vision-light: #faf5ff;
+        --vision-dark: #553c9a;
+
+        --values-primary: #38b2ac;
+        --values-light: #e6fffa;
+        --values-dark: #234e52;
+
+        --accent: #667eea;
+        --accent-light: #764ba2;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
+
+      body {
+        background-color: #f8fafc;
+        color: var(--blue-dark);
+        line-height: 1.6;
+      }
+
+      .mvp-section {
+        padding: 100px 5%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 70px;
+        position: relative;
+      }
+
+      .section-header h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, var(--accent), var(--accent-light));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .section-header p {
+        font-size: 1.2rem;
+        max-width: 700px;
+        margin: 0 auto;
+        color: var(--text-light);
+      }
+
+      .mvp-container {
+        display: flex;
+        flex-direction: column;
+        gap: 60px;
+        max-width: 1400px;
+        margin: 0 auto;
+      }
+
+      /* Color plane base style */
+      .color-plane {
+        border-radius: var(--radius);
+        overflow: hidden;
+        box-shadow: var(--shadow);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .color-plane:hover {
+        transform: translateY(-10px);
+        box-shadow: var(--shadow-hover);
+      }
+
+      /* Color plane headers */
+      .plane-header {
+        padding: 40px 40px 30px;
+        position: relative;
+        overflow: hidden;
+        min-height: 180px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+
+      .plane-icon {
+        position: absolute;
+        top: 30px;
+        right: 30px;
+        width: 80px;
+        height: 80px;
+        border-radius: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 36px;
+        color: white;
+        opacity: 0.2;
+        transition: all 0.5s ease;
+      }
+
+      .color-plane:hover .plane-icon {
+        transform: rotate(15deg) scale(1.1);
+        opacity: 0.25;
+      }
+
+      .plane-title {
+        font-size: 2.2rem;
+        font-weight: 800;
+        margin-bottom: 15px;
+        position: relative;
+        z-index: 2;
+      }
+
+      .plane-subtitle {
+        font-size: 1.1rem;
+        opacity: 0.9;
+        position: relative;
+        z-index: 2;
+        max-width: 600px;
+      }
+
+      /* Color plane content */
+      .plane-content {
+        padding: 40px;
+        flex-grow: 1;
+        position: relative;
+      }
+
+      .plane-content p {
+        font-size: 1.15rem;
+        line-height: 1.8;
+        margin-bottom: 25px;
+      }
+
+      /* Mission specific */
+      .mission-plane .plane-header {
+        background: linear-gradient(
+          135deg,
+          var(--mission-primary),
+          var(--mission-dark)
+        );
+        color: white;
+      }
+
+      .mission-plane .plane-icon {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .mission-plane .plane-content {
+        background-color: var(--mission-light);
+        color: var(--mission-dark);
+      }
+
+      .mission-plane .highlight-box {
+        background: rgba(66, 153, 225, 0.1);
+        border-left: 5px solid var(--mission-primary);
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 30px;
+      }
+
+      /* Vision specific */
+      .vision-plane .plane-header {
+        background: linear-gradient(
+          135deg,
+          var(--vision-primary),
+          var(--vision-dark)
+        );
+        color: white;
+      }
+
+      .vision-plane .plane-icon {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .vision-plane .plane-content {
+        background-color: var(--vision-light);
+        color: var(--vision-dark);
+      }
+
+      .vision-plane .highlight-box {
+        background: rgba(159, 122, 234, 0.1);
+        border-left: 5px solid var(--vision-primary);
+        padding: 25px;
+        border-radius: 15px;
+        margin-top: 30px;
+      }
+
+      /* Values specific */
+      .values-plane .plane-header {
+        background: linear-gradient(
+          135deg,
+          var(--values-primary),
+          var(--values-dark)
+        );
+        color: white;
+      }
+
+      .values-plane .plane-icon {
+        background: rgba(255, 255, 255, 0.2);
+      }
+
+      .values-plane .plane-content {
+        background-color: var(--values-light);
+        color: var(--values-dark);
+      }
+
+      .values-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin-top: 30px;
+      }
+
+      .value-item {
+        background: white;
+        border-radius: 15px;
+        padding: 25px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .value-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      .value-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: white;
+        margin-bottom: 20px;
+        background: linear-gradient(
+          135deg,
+          var(--values-primary),
+          var(--values-dark)
+        );
+      }
+
+      .value-item h4 {
+        font-size: 1.3rem;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      /* Decorative elements */
+      .plane-decoration {
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        opacity: 0.05;
+        z-index: 1;
+      }
+
+      .mission-plane .plane-decoration {
+        background: var(--mission-primary);
+        bottom: -80px;
+        right: -80px;
+      }
+
+      .vision-plane .plane-decoration {
+        background: var(--vision-primary);
+        top: -80px;
+        left: -80px;
+      }
+
+      .values-plane .plane-decoration {
+        background: var(--values-primary);
+        bottom: -80px;
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      /* Animation */
+      .color-plane {
+        opacity: 0;
+        transform: translateY(50px);
+        animation: fadeUp 0.8s ease forwards;
+      }
+
+      .mission-plane {
+        animation-delay: 0.1s;
+      }
+
+      .vision-plane {
+        animation-delay: 0.3s;
+      }
+
+      .values-plane {
+        animation-delay: 0.5s;
+      }
+
+      @keyframes fadeUp {
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .plane-title {
+          font-size: 1.9rem;
+        }
+
+        .values-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .mvp-section {
+          padding: 70px 20px;
+        }
+
+        .section-header h1 {
+          font-size: 2.5rem;
+        }
+
+        .plane-header,
+        .plane-content {
+          padding: 30px;
+        }
+
+        .plane-title {
+          font-size: 1.7rem;
+        }
+
+        .values-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .plane-icon {
+          width: 60px;
+          height: 60px;
+          font-size: 28px;
+          top: 20px;
+          right: 20px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .mvp-section {
+          padding: 50px 15px;
+        }
+
+        .section-header h1 {
+          font-size: 2rem;
+        }
+
+        .plane-header,
+        .plane-content {
+          padding: 25px;
+        }
+
+        .plane-title {
+          font-size: 1.5rem;
+        }
+
+        .plane-subtitle {
+          font-size: 1rem;
+        }
+
+        .plane-content p {
+          font-size: 1.05rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <section class="mvp-section">
+      <div class="section-header">
+        <h1>Our Mission, Vision & Values</h1>
+        <p>
+          Guiding principles that shape our company culture and drive us towards
+          excellence
+        </p>
+      </div>
+
+      <div class="mvp-container">
+        <!-- Mission Plane -->
+        <div class="color-plane mission-plane">
+          <div class="plane-header">
+            <div class="plane-icon">
+              <i class="fas fa-bullseye"></i>
+            </div>
+            <h2 class="plane-title">Our Mission</h2>
+            <p class="plane-subtitle">
+              Our purpose and what we strive to achieve every day
+            </p>
+            <div class="plane-decoration"></div>
+          </div>
+          <div class="plane-content">
+            <p>
+              To empower businesses and individuals through innovative
+              technology solutions that simplify complex challenges, enhance
+              productivity, and foster sustainable growth in an ever-evolving
+              digital landscape.
+            </p>
+
+            <p>
+              We are committed to delivering exceptional value to our clients by
+              combining cutting-edge technology with deep industry expertise,
+              creating partnerships that drive mutual success.
+            </p>
+
+            <div class="highlight-box">
+              <i
+                class="fas fa-quote-left"
+                style="
+                  font-size: 1.5rem;
+                  margin-bottom: 10px;
+                  display: block;
+                  opacity: 0.7;
+                "
+              ></i>
+              <p style="font-style: italic; font-weight: 500; margin-bottom: 0">
+                "To create technology that makes the complex simple, the
+                inaccessible available, and the impossible possible for every
+                business, everywhere."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vision Plane -->
+        <div class="color-plane vision-plane">
+          <div class="plane-header">
+            <div class="plane-icon">
+              <i class="fas fa-eye"></i>
+            </div>
+            <h2 class="plane-title">Our Vision</h2>
+            <p class="plane-subtitle">
+              Where we're headed and what we aspire to become
+            </p>
+            <div class="plane-decoration"></div>
+          </div>
+          <div class="plane-content">
+            <p>
+              To be the global leader in transformative business solutions,
+              recognized for our ability to anticipate market trends, adapt to
+              changing needs, and deliver technology that not only meets but
+              exceeds expectations.
+            </p>
+
+            <p>
+              We envision a future where technology bridges gaps, creates
+              opportunities, and empowers organizations to achieve their fullest
+              potential while making a positive impact on society and the
+              environment.
+            </p>
+
+            <div class="highlight-box">
+              <i
+                class="fas fa-quote-left"
+                style="
+                  font-size: 1.5rem;
+                  margin-bottom: 10px;
+                  display: block;
+                  opacity: 0.7;
+                "
+              ></i>
+              <p style="font-style: italic; font-weight: 500; margin-bottom: 0">
+                "To shape a future where technology serves humanity, businesses
+                thrive through innovation, and progress benefits everyone."
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Values Plane -->
+        <div class="color-plane values-plane">
+          <div class="plane-header">
+            <div class="plane-icon">
+              <i class="fas fa-heart"></i>
+            </div>
+            <h2 class="plane-title">Our Core Values</h2>
+            <p class="plane-subtitle">
+              The principles that guide our decisions and actions
+            </p>
+            <div class="plane-decoration"></div>
+          </div>
+          <div class="plane-content">
+            <p>
+              Our values are the foundation of our company culture and the
+              compass that guides our decisions, relationships, and innovations.
+              They define who we are and how we work.
+            </p>
+
+            <div class="values-grid">
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-users"></i>
+                </div>
+                <h4>Collaboration</h4>
+                <p>
+                  We believe in the power of teamwork, open communication, and
+                  shared success. Together, we achieve more than any individual
+                  could alone.
+                </p>
+              </div>
+
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-lightbulb"></i>
+                </div>
+                <h4>Innovation</h4>
+                <p>
+                  We continuously seek new ideas, embrace change, and challenge
+                  the status quo to create better solutions for our clients.
+                </p>
+              </div>
+
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-shield-alt"></i>
+                </div>
+                <h4>Integrity</h4>
+                <p>
+                  We act with honesty, transparency, and ethical responsibility
+                  in all our interactions, building trust that lasts.
+                </p>
+              </div>
+
+              <div class="value-item">
+                <div class="value-icon">
+                  <i class="fas fa-trophy"></i>
+                </div>
+                <h4>Excellence</h4>
+                <p>
+                  We are committed to delivering exceptional quality in
+                  everything we do, from our products to our customer service.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      // Add scroll animations
+      document.addEventListener("DOMContentLoaded", function () {
+        const colorPlanes = document.querySelectorAll(".color-plane");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.style.animationPlayState = "running";
+              }
+            });
+          },
+          { threshold: 0.1 },
+        );
+
+        colorPlanes.forEach((plane) => {
+          plane.style.animationPlayState = "paused";
+          observer.observe(plane);
+        });
+
+        // Add hover effect enhancement
+        colorPlanes.forEach((plane) => {
+          plane.addEventListener("mouseenter", function () {
+            this.style.zIndex = "10";
+          });
+
+          plane.addEventListener("mouseleave", function () {
+            this.style.zIndex = "1";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

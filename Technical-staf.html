@@ -1,0 +1,627 @@
+<div class="mvp-section">
+  <div class="section-tagline">
+    <span class="tagline-text">Our Foundation</span>
+    <div class="tagline-decoration"></div>
+  </div>
+
+  <div class="mvp-container">
+    <!-- MISSION -->
+    <div class="mvp-card mission-card">
+      <div class="card-illustration">
+        <div class="illustration-circle mission-circle"></div>
+        <div class="illustration-icon">
+          <i class="fas fa-bullseye"></i>
+        </div>
+      </div>
+      <div class="card-header">
+        <div class="card-badge">MISSION</div>
+        <h2>Driving Excellence Through Precision</h2>
+      </div>
+      <div class="card-content">
+        <p>
+          To empower developers, contractors, and government agencies with
+          data-driven advisory services that mitigate risk and maximise
+          structural efficiency.
+        </p>
+        <div class="mission-highlight">
+          <i class="fas fa-chart-line"></i>
+          <span>Data-Driven Solutions</span>
+        </div>
+      </div>
+      <div class="card-decoration mission-decoration"></div>
+    </div>
+
+    <!-- VISION -->
+    <div class="mvp-card vision-card">
+      <div class="card-illustration">
+        <div class="illustration-circle vision-circle"></div>
+        <div class="illustration-icon">
+          <i class="fas fa-eye"></i>
+        </div>
+      </div>
+      <div class="card-header">
+        <div class="card-badge">VISION</div>
+        <h2>Building West Africa's Future</h2>
+      </div>
+      <div class="card-content">
+        <p>
+          To be West Africa's most trusted architectural and structural advisory
+          firm, recognized for integrity and engineering excellence.
+        </p>
+        <div class="vision-highlight">
+          <i class="fas fa-award"></i>
+          <span>Trust & Excellence</span>
+        </div>
+      </div>
+      <div class="card-decoration vision-decoration"></div>
+    </div>
+
+    <!-- CORE VALUES -->
+    <div class="mvp-card values-card">
+      <div class="card-illustration">
+        <div class="illustration-circle values-circle"></div>
+        <div class="illustration-icon">
+          <i class="fas fa-heart"></i>
+        </div>
+      </div>
+      <div class="card-header">
+        <div class="card-badge">CORE VALUES</div>
+        <h2>Our Guiding Principles</h2>
+      </div>
+      <div class="card-content">
+        <ul class="values-list">
+          <li class="value-item">
+            <div class="value-icon">
+              <i class="fas fa-ruler-combined"></i>
+            </div>
+            <div class="value-content">
+              <h4>Precision</h4>
+              <p>We believe in the "measure twice, cut once" philosophy.</p>
+            </div>
+          </li>
+          <li class="value-item">
+            <div class="value-icon">
+              <i class="fas fa-map-marked-alt"></i>
+            </div>
+            <div class="value-content">
+              <h4>Local Insight</h4>
+              <p>
+                Tailoring global engineering standards to the unique Ghanaian
+                climate and soil conditions.
+              </p>
+            </div>
+          </li>
+          <li class="value-item">
+            <div class="value-icon">
+              <i class="fas fa-handshake"></i>
+            </div>
+            <div class="value-content">
+              <h4>Accountability</h4>
+              <p>Taking full ownership of the advice we provide.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="card-decoration values-decoration"></div>
+    </div>
+  </div>
+</div>
+
+<style>
+  :root {
+    --blue-dark: #1a365d;
+    --blue-medium: #2c5282;
+    --blue-light: #4299e1;
+    --blue-soft: #ebf8ff;
+    --accent: #38b2ac;
+    --accent-light: #4fd1c7;
+    --accent-dark: #2c7a7b;
+    --mission-color: #4299e1;
+    --vision-color: #2c5282;
+    --values-color: #38b2ac;
+    --white: #ffffff;
+    --text: #2d3748;
+    --text-light: #718096;
+    --border: #e2e8f0;
+    --shadow: 0 25px 50px rgba(0, 0, 0, 0.08);
+    --shadow-hover: 0 35px 70px rgba(0, 0, 0, 0.12);
+    --radius: 28px;
+  }
+
+  .mvp-section {
+    padding: 120px 5%;
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mvp-section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(
+      to right,
+      transparent,
+      var(--accent),
+      transparent
+    );
+  }
+
+  .section-tagline {
+    text-align: center;
+    margin-bottom: 80px;
+    position: relative;
+  }
+
+  .tagline-text {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    position: relative;
+    padding-bottom: 15px;
+  }
+
+  .tagline-decoration {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 3px;
+    background: linear-gradient(to right, var(--accent), var(--accent-light));
+    border-radius: 2px;
+  }
+
+  .mvp-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 40px;
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .mvp-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 50px 40px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    height: 100%;
+  }
+
+  .mvp-card:hover {
+    transform: translateY(-15px);
+    box-shadow: var(--shadow-hover);
+  }
+
+  .card-illustration {
+    position: relative;
+    margin-bottom: 35px;
+    height: 120px;
+  }
+
+  .illustration-circle {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    opacity: 0.1;
+    transition: all 0.5s ease;
+  }
+
+  .mission-circle {
+    background: var(--mission-color);
+    top: 0;
+    left: 0;
+  }
+
+  .vision-circle {
+    background: var(--vision-color);
+    top: 10px;
+    right: 0;
+  }
+
+  .values-circle {
+    background: var(--values-color);
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .mvp-card:hover .illustration-circle {
+    opacity: 0.15;
+    transform: scale(1.2);
+  }
+
+  .illustration-icon {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60px;
+    height: 60px;
+    border-radius: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    color: white;
+    z-index: 2;
+    transition: all 0.4s ease;
+  }
+
+  .mission-card .illustration-icon {
+    background: linear-gradient(135deg, var(--mission-color), #63b3ed);
+  }
+
+  .vision-card .illustration-icon {
+    background: linear-gradient(135deg, var(--vision-color), #4299e1);
+  }
+
+  .values-card .illustration-icon {
+    background: linear-gradient(
+      135deg,
+      var(--values-color),
+      var(--accent-light)
+    );
+  }
+
+  .mvp-card:hover .illustration-icon {
+    transform: translate(-50%, -50%) rotate(15deg) scale(1.1);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  .card-header {
+    margin-bottom: 30px;
+  }
+
+  .card-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+  }
+
+  .mission-card .card-badge {
+    background: rgba(66, 153, 225, 0.1);
+    color: var(--mission-color);
+  }
+
+  .vision-card .card-badge {
+    background: rgba(44, 82, 130, 0.1);
+    color: var(--vision-color);
+  }
+
+  .values-card .card-badge {
+    background: rgba(56, 178, 172, 0.1);
+    color: var(--values-color);
+  }
+
+  .card-header h2 {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--blue-dark);
+    line-height: 1.3;
+    margin: 0;
+  }
+
+  .card-content {
+    position: relative;
+    z-index: 2;
+  }
+
+  .card-content p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: var(--text-light);
+    margin-bottom: 25px;
+  }
+
+  /* Mission specific styles */
+  .mission-highlight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: rgba(66, 153, 225, 0.05);
+    border-radius: 15px;
+    border-left: 4px solid var(--mission-color);
+    margin-top: 20px;
+  }
+
+  .mission-highlight i {
+    color: var(--mission-color);
+    font-size: 1.2rem;
+  }
+
+  .mission-highlight span {
+    font-weight: 600;
+    color: var(--blue-dark);
+  }
+
+  /* Vision specific styles */
+  .vision-highlight {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px;
+    background: rgba(44, 82, 130, 0.05);
+    border-radius: 15px;
+    border-left: 4px solid var(--vision-color);
+    margin-top: 20px;
+  }
+
+  .vision-highlight i {
+    color: var(--vision-color);
+    font-size: 1.2rem;
+  }
+
+  .vision-highlight span {
+    font-weight: 600;
+    color: var(--blue-dark);
+  }
+
+  /* Values specific styles */
+  .values-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .value-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+
+  .value-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .value-item:hover {
+    transform: translateX(10px);
+  }
+
+  .value-icon {
+    width: 50px;
+    height: 50px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    color: white;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+  }
+
+  .value-item:nth-child(1) .value-icon {
+    background: linear-gradient(135deg, #4299e1, #63b3ed);
+  }
+
+  .value-item:nth-child(2) .value-icon {
+    background: linear-gradient(135deg, #2c5282, #4299e1);
+  }
+
+  .value-item:nth-child(3) .value-icon {
+    background: linear-gradient(135deg, #38b2ac, #4fd1c7);
+  }
+
+  .value-item:hover .value-icon {
+    transform: rotate(15deg) scale(1.1);
+  }
+
+  .value-content h4 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--blue-dark);
+    margin-bottom: 5px;
+  }
+
+  .value-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin: 0;
+  }
+
+  /* Card decorations */
+  .card-decoration {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    opacity: 0.03;
+    transition: all 0.5s ease;
+    z-index: 1;
+  }
+
+  .mission-decoration {
+    background: var(--mission-color);
+    transform: translate(30%, 30%);
+  }
+
+  .vision-decoration {
+    background: var(--vision-color);
+    transform: translate(30%, 30%);
+  }
+
+  .values-decoration {
+    background: var(--values-color);
+    transform: translate(30%, 30%);
+  }
+
+  .mvp-card:hover .card-decoration {
+    opacity: 0.05;
+    transform: translate(20%, 20%) scale(1.2);
+  }
+
+  /* Animation classes */
+  .mvp-card {
+    opacity: 0;
+    transform: translateY(40px);
+    animation: slideUpFade 0.8s ease forwards;
+  }
+
+  .mission-card {
+    animation-delay: 0.1s;
+  }
+  .vision-card {
+    animation-delay: 0.3s;
+  }
+  .values-card {
+    animation-delay: 0.5s;
+  }
+
+  @keyframes slideUpFade {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1200px) {
+    .mvp-container {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .values-card {
+      grid-column: span 2;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .mvp-section {
+      padding: 80px 20px;
+    }
+
+    .mvp-container {
+      grid-template-columns: 1fr;
+      gap: 30px;
+    }
+
+    .values-card {
+      grid-column: span 1;
+    }
+
+    .mvp-card {
+      padding: 40px 30px;
+    }
+
+    .card-header h2 {
+      font-size: 1.6rem;
+    }
+
+    .illustration-circle {
+      width: 80px;
+      height: 80px;
+    }
+
+    .illustration-icon {
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .mvp-section {
+      padding: 60px 15px;
+    }
+
+    .section-tagline {
+      margin-bottom: 50px;
+    }
+
+    .mvp-card {
+      padding: 35px 25px;
+    }
+
+    .card-header h2 {
+      font-size: 1.4rem;
+    }
+
+    .value-item {
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .value-icon {
+      align-self: flex-start;
+    }
+  }
+</style>
+
+<script>
+  // Add interactive animations
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".mvp-card");
+    const valueItems = document.querySelectorAll(".value-item");
+
+    // Card hover effects
+    cards.forEach((card) => {
+      card.addEventListener("mouseenter", function () {
+        this.style.transform = "translateY(-15px)";
+        this.style.boxShadow = "var(--shadow-hover)";
+      });
+
+      card.addEventListener("mouseleave", function () {
+        this.style.transform = "translateY(0)";
+        this.style.boxShadow = "var(--shadow)";
+      });
+    });
+
+    // Value items hover effects
+    valueItems.forEach((item) => {
+      item.addEventListener("mouseenter", function () {
+        const icon = this.querySelector(".value-icon");
+        icon.style.transform = "rotate(15deg) scale(1.1)";
+      });
+
+      item.addEventListener("mouseleave", function () {
+        const icon = this.querySelector(".value-icon");
+        icon.style.transform = "rotate(0) scale(1)";
+      });
+    });
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px",
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.style.animationPlayState = "running";
+        }
+      });
+    }, observerOptions);
+
+    cards.forEach((card) => observer.observe(card));
+  });
+</script>

@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>StructaPro – Expression of Interest</title>
+
+    <!-- Google font -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* ========================================
+   COLOR PALETTE (from chart-OG)
+======================================== */
+      :root {
+        --blue-dark: #2c5282;
+        --blue-light: #63b3ed;
+        --blue-soft: #ebf8ff;
+        --bg: #edf2f7;
+        --text: #2d3748;
+        --grid: #e2e8f0;
+        --white: #ffffff;
+      }
+
+      /* ========================================
+   BASE
+======================================== */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: var(--bg);
+        color: var(--text);
+        line-height: 1.6;
+        margin: 0;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        overflow-x: hidden;
+      }
+
+      section {
+        padding: 90px 8%;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-weight: 700;
+      }
+
+      h2 {
+        font-size: 2rem;
+        margin-bottom: 30px;
+        color: var(--blue-dark);
+      }
+
+      /* ========================================
+   NAVBAR
+======================================== */
+      /* Header */
+      header.site-header {
+        position: sticky;
+        top: 0;
+        z-index: 40;
+        backdrop-filter: saturate(120%) blur(8px);
+      }
+      .nav-wrap {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        background: rgba(11, 15, 25, 0.6);
+      }
+      .nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+        padding: 0.9rem 0;
+      }
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.8rem;
+        text-decoration: none;
+        color: var(--text);
+      }
+      .logo {
+        position: relative;
+        width: 40px;
+        height: 40px;
+        border-radius: 8px;
+        overflow: hidden;
+        background: url(XOXO.png) center/cover;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+      .logo::before,
+      .logo::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+      }
+      .logo::before {
+        background: linear-gradient(
+          90deg,
+          transparent 45%,
+          rgba(255, 255, 255, 0.35) 50%,
+          transparent 55%
+        );
+        transform: translateX(-60%);
+        animation: sheen 3s linear infinite;
+      }
+      .logo::after {
+        mask: radial-gradient(circle at 50% 50%, black 45%, transparent 46%);
+        background: radial-gradient(
+          circle at 50% 50%,
+          transparent 0 45%,
+          transparent 46%
+        );
+      }
+      @keyframes sheen {
+        100% {
+          transform: translateX(120%);
+        }
+      }
+      .brand-title {
+        font-weight: 800;
+        letter-spacing: 0.3px;
+      }
+      .brand-title span {
+        color: var(--primary);
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 1.2rem;
+      }
+      .nav-links a {
+        text-decoration: none;
+        color: var(--muted);
+        font-weight: 600;
+        transition:
+          color 0.2s ease,
+          opacity 0.2s ease;
+      }
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      /* Mobile menu */
+      .hamburger {
+        display: none;
+        width: 44px;
+        height: 44px;
+        border-radius: 10px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        background: rgba(255, 255, 255, 0.04);
+        color: #fff;
+      }
+      .hamburger svg {
+        width: 24px;
+        height: 24px;
+      }
+
+      @media (max-width: 900px) {
+        .nav-links {
+          display: none;
+        }
+        .hamburger {
+          display: grid;
+          place-items: center;
+        }
+        .mobile-panel {
+          position: fixed;
+          inset: 64px 0 auto 0;
+          background: rgba(11, 15, 25, 0.92);
+          border-top: 1px solid rgba(255, 255, 255, 0.06);
+          backdrop-filter: blur(10px);
+          display: none;
+        }
+        .mobile-panel.open {
+          display: block;
+        }
+        .mobile-nav {
+          display: grid;
+          gap: 0.6rem;
+          padding: 1rem;
+        }
+        .mobile-nav a {
+          padding: 0.9rem 1rem;
+          border-radius: 12px;
+          border: 1px solid rgba(255, 255, 255, 0.06);
+          color: #e5e7eb;
+          text-decoration: none;
+          font-weight: 600;
+        }
+      }
+      /*
+      nav {
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        background: var(--white);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 18px 8%;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+      }
+
+      .logo {
+        font-weight: 700;
+        font-size: 1.2rem;
+        color: var(--blue-dark);
+      }
+
+      nav ul {
+        display: flex;
+        list-style: none;
+        gap: 25px;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--text);
+        font-weight: 500;
+        transition: 0.3s;
+      }
+
+      nav a:hover {
+        color: var(--blue-dark);
+      }
+
+      /* ========================================
+   HERO
+======================================== */
+      .hero {
+        background: linear-gradient(
+          135deg,
+          var(--blue-dark),
+          var(--blue-light)
+        );
+        color: white;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 15px;
+      }
+
+      .hero p {
+        max-width: 700px;
+        opacity: 0.95;
+      }
+
+      .btn {
+        margin-top: 30px;
+        background: white;
+        color: var(--blue-dark);
+        padding: 12px 28px;
+        border-radius: 30px;
+        font-weight: 600;
+        display: inline-block;
+        text-decoration: none;
+      }
+
+      /* ===== Section ===== */
+      .mv-section {
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .mv-title {
+        text-align: center;
+        font-size: 2.2rem;
+        font-weight: 700;
+        color: var(--blue-dark);
+        margin-bottom: 50px;
+      }
+
+      /* ===== Grid Layout ===== */
+      .mv-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 30px;
+        padding: 10px;
+      }
+
+      /* ===== Cards ===== */
+      .card {
+        background: var(--white);
+        padding: 35px;
+        border-radius: 14px;
+        border: 1px solid var(--grid);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+      }
+
+      /* ===== Headings ===== */
+      .card h2 {
+        color: var(--blue-dark);
+        margin-bottom: 15px;
+        font-size: 1.4rem;
+      }
+
+      /* ===== Mission & Vision style ===== */
+      .highlight {
+        border-top: 5px solid var(--blue-light);
+      }
+
+      /* ===== Core values list ===== */
+      .values {
+        list-style: none;
+        padding: 0;
+      }
+
+      .values li {
+        margin-bottom: 15px;
+        padding-left: 20px;
+        position: relative;
+      }
+
+      .values li::before {
+        content: "✔";
+        position: absolute;
+        left: 0;
+        color: var(--blue-dark);
+        font-weight: bold;
+      }
+
+      /* ===== Section Title ===== */
+      .section-title {
+        text-align: center;
+        margin-bottom: 60px;
+      }
+
+      .section-title h1 {
+        font-size: 2.3rem;
+        color: var(--blue-dark);
+        margin-bottom: 12px;
+      }
+
+      .section-title p .exp {
+        max-width: 720px;
+        margin: auto;
+        opacity: 0.85;
+      }
+
+      /* ===== Grid ===== */
+      .expertise-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 30px;
+      }
+
+      /* ===== Cards ===== */
+      .carx {
+        background: var(--white);
+        padding: 30px;
+        border-radius: 14px;
+        border: 1px solid var(--grid);
+        box-shadow: 0 10px 22px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+      }
+
+      .carx:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 16px 28px rgba(0, 0, 0, 0.08);
+      }
+
+      /* ===== Icon circle ===== */
+      .icon {
+        width: 60px;
+        height: 60px;
+        background: var(--blue-soft);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        margin-bottom: 18px;
+        font-size: 22px;
+        color: var(--blue-dark);
+      }
+
+      /* ===== Text ===== */
+      .carx h3 {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+        color: var(--blue-dark);
+      }
+
+      .carx p {
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      /* ===== Title ===== */
+      .section-title {
+        text-align: center;
+        font-size: 2.3rem;
+        font-weight: 700;
+        color: var(--blue-dark);
+        margin-bottom: 60px;
+      }
+
+      /* =====================================
+   CEO pro
+===================================== */
+      .ceo {
+        background: var(--blue-dark);
+        color: white;
+        max-width: 420px;
+        margin: 0 auto 70px;
+        padding: 40px;
+        border-radius: 18px;
+        text-align: center;
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.15);
+      }
+
+      /* CEO image bigger */
+      .ceo .avatar {
+        width: 130px;
+        height: 130px;
+        margin: 0 auto 18px;
+        border-radius: 50%;
+        background: #d9d9d9;
+        overflow: hidden;
+        border: 4px solid white;
+      }
+
+      .ceo .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* =====================================
+   TEAM GRID
+===================================== */
+      .team-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+      }
+
+      /* =====================================
+   CARDS
+===================================== */
+      .pro {
+        background: var(--white);
+        border: 1px solid var(--grid);
+        padding: 30px 20px;
+        border-radius: 14px;
+        text-align: center;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+        transition: 0.3s;
+      }
+
+      .pro:hover {
+        transform: translateY(-6px);
+      }
+
+      /* Avatar space */
+      .avatar {
+        width: 95px;
+        height: 95px;
+        margin: 0 auto 15px;
+        border-radius: 50%;
+        background: #d9d9d9; /* placeholder color */
+        overflow: hidden;
+      }
+
+      /* real image fit */
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      /* Name */
+      .name {
+        font-weight: 700;
+        color: var(--blue-dark);
+        margin-bottom: 6px;
+      }
+
+      /* Role */
+      .role {
+        font-size: 0.9rem;
+        color: #555;
+      }
+      /* ========================================
+   CARDS
+======================================== */
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 25px;
+      }
+
+      .card {
+        background: var(--white);
+        padding: 25px;
+        border-radius: 14px;
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.06);
+        border: 1px solid var(--grid);
+        transition: 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-6px);
+      }
+
+      /* ========================================
+   ORGANIZATION / STAFF TABLE
+======================================== */
+      .table {
+        background: white;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      }
+
+      .table-row {
+        display: grid;
+        grid-template-columns: 2fr 2fr 4fr;
+        border-bottom: 1px solid var(--grid);
+        padding: 14px 18px;
+        font-size: 0.95rem;
+      }
+
+      .table-header {
+        background: var(--blue-soft);
+        font-weight: 600;
+        color: var(--blue-dark);
+      }
+
+      /* ========================================
+   TIMELINE (Methodology)
+======================================== */
+      .timeline {
+        border-left: 4px solid var(--blue-light);
+        padding-left: 25px;
+      }
+
+      .step {
+        margin-bottom: 25px;
+      }
+
+      .step h3 {
+        color: var(--blue-dark);
+        margin-bottom: 6px;
+      }
+
+      /* ========================================
+   FOOTER
+======================================== */
+      footer {
+        background: var(--blue-dark);
+        color: white;
+        text-align: center;
+        padding: 35px 10px;
+      }
+
+      /* ========================================
+   ANIMATION
+======================================== */
+      .fade {
+        opacity: 0;
+        transform: translateY(25px);
+        transition: all 0.6s ease;
+      }
+
+      .show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Header -->
+    <header class="site-header" role="banner">
+      <div class="nav-wrap">
+        <div class="container nav" aria-label="Primary navigation">
+          <a class="brand" href="#" aria-label="Joy Aluminum Home">
+            <span class="logo" aria-hidden="true"></span>
+            <strong class="brand-title">STRUCTAPRO</strong>
+          </a>
+
+          <nav class="nav-links" role="navigation">
+            <a href="#about">About</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#org">Team</a>
+            <a href="#method">Methodology</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a class="button" href="qoute.html">Get Quote</a>
+          </nav>
+
+          <button
+            class="hamburger"
+            id="hamburger"
+            aria-controls="mobile-menu"
+            aria-expanded="false"
+            aria-label="Open menu"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M3 6h18M3 12h18M3 18h18" />
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="mobile-menu" class="mobile-panel" hidden>
+        <div class="container mobile-nav">
+          <a href="#about">About</a>
+          <a href="#expertise">Expertise</a>
+          <a href="#org">Team</a>
+          <a href="#method">Methodology</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+          <a class="button" href="qoute.html">Get Quote</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div>
+        <h1>Expression of Interest</h1>
+        <p>
+          StructaPro Construction Advisory provides strategic project
+          management, structural advisory and cost consultancy services across
+          Ghana and West Africa.
+        </p>
+        <a href="#about" class="btn"
+          ><iframe src="EOI...pdf" width="100%" height="500px"></iframe>Explore
+          Profile</a
+        >
+      </div>
+    </section>
+    <br /><br />
+
+    <div class="mv-grid">
+      <!-- MISSION -->
+      <div class="card highlight">
+        <h2>MISSION</h2>
+        <p>
+          To empower developers, contractors, and government agencies with
+          data-driven advisory services that mitigate risk and maximise
+          structural efficiency.
+        </p>
+      </div>
+
+      <!-- VISION -->
+      <div class="card highlight">
+        <h2>VISION</h2>
+        <p>
+          To be West Africa’s most trusted architectural and structural advisory
+          firm, recognized for integrity and engineering excellence.
+        </p>
+      </div>
+
+      <!-- CORE VALUES -->
+      <div class="card">
+        <h2>CORE VALUES</h2>
+        <ul class="values">
+          <li>
+            <strong>Precision:</strong> We believe in the “measure twice, cut
+            once” philosophy.
+          </li>
+          <li>
+            <strong>Local Insight:</strong> Tailoring global engineering
+            standards to the unique Ghanaian climate and soil conditions.
+          </li>
+          <li>
+            <strong>Accountability:</strong> Taking full ownership of the advice
+            we provide.
+          </li>
+        </ul>
+      </div>
+    </div>
+    <br /><br />
+
+    <section>
+      <div class="section-title">
+        <h1>Our Expertise</h1>
+        <p class="exp">
+          We offer a comprehensive suite of advisory services tailored to the
+          Ghanaian construction landscape.
+        </p>
+      </div>
+
+      <div class="expertise-grid">
+        <!-- 1 -->
+        <div class="carx">
+          <div class="icon"><i class="fa-solid fa-helmet-safety"></i></div>
+          <h3>Project Management & Oversight</h3>
+          <p>
+            Representing the client’s interests on-site to ensure contractors
+            adhere to specifications, timelines, and budgets.
+          </p>
+        </div>
+
+        <!-- 2 -->
+        <div class="carx">
+          <div class="icon"><i class="fa-solid fa-building-shield"></i></div>
+          <h3>Structural Integrity Audits</h3>
+          <p>
+            Specialized assessments for existing and uncompleted structures to
+            ensure safety and compliance with the Ghana Building Code.
+          </p>
+        </div>
+
+        <!-- 3 -->
+        <div class="carx">
+          <div class="icon"><i class="fa-solid fa-chart-line"></i></div>
+          <h3>Value Engineering</h3>
+          <p>
+            Analysing designs to reduce costs without compromising the quality
+            or safety of the build.
+          </p>
+        </div>
+
+        <!-- 4 -->
+        <div class="carx">
+          <div class="icon">
+            <i class="fa-solid fa-magnifying-glass-chart"></i>
+          </div>
+          <h3>Pre-Construction Feasibility</h3>
+          <p>
+            Comprehensive site analysis including soil reports, structural
+            viability studies, and technical risk assessments.
+          </p>
+        </div>
+
+        <!-- 5 -->
+        <div class="carx">
+          <div class="icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3>Compliance & Permitting Advisory</h3>
+          <p>
+            Navigating regulatory requirements of District Assemblies and the
+            Engineering Council of Ghana.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h1 class="section-title">The Organization</h1>
+
+      <!-- ================= CEO ================= -->
+      <div class="ceo">
+        <div class="avatar">
+          <!-- Replace with real image -->
+          <img src="XOXO.png" />
+        </div>
+        <h2>LEIF SEYRA KORBLAH</h2>
+        <p>CHIEF EXECUTIVE OFFICER</p>
+      </div>
+
+      <!-- ================= TEAM ================= -->
+      <div class="team-grid">
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">NTIAMOAH NANA SNR.</div>
+          <div class="role">Director</div>
+        </div>
+
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">KINGS KWAME KYERE</div>
+          <div class="role">General Manager</div>
+        </div>
+
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">SALOMEY AFRIYIE</div>
+          <div class="role">Director of Finance & Administration</div>
+        </div>
+
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">NANA BENYI</div>
+          <div class="role">Director of Business Development</div>
+        </div>
+
+        <div class="pro">
+          <div class="avatar"><img src="XOXO.png" /></div>
+          <div class="name">DESMOND BOATEY</div>
+          <div class="role">Director of Operations</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="fade">
+      <h2>About Us</h2>
+      <p>
+        We combine international best practices with local expertise to deliver
+        structurally sound, financially viable and compliant infrastructure.
+      </p>
+    </section>
+
+    <!-- EXPERTISE -->
+    <section id="expertise" class="fade">
+      <h2>Our Expertise</h2>
+
+      <div class="grid">
+        <div class="card">Project Management & Oversight</div>
+        <div class="card">Structural Integrity Audits</div>
+        <div class="card">Value Engineering</div>
+        <div class="card">Pre-Construction Feasibility</div>
+        <div class="card">Compliance & Permitting Advisory</div>
+      </div>
+    </section>
+
+    <!-- ORGANIZATION -->
+    <section id="org" class="fade">
+      <h2>Technical Team</h2>
+
+      <div class="table">
+        <div class="table-row table-header">
+          <div>Name</div>
+          <div>Position</div>
+          <div>Specialisation</div>
+        </div>
+
+        <div class="table-row">
+          <div>Leif Yevugah</div>
+          <div>Project Manager</div>
+          <div>Planning, execution & stakeholder coordination</div>
+        </div>
+
+        <div class="table-row">
+          <div>Darlington Payne</div>
+          <div>Architect</div>
+          <div>Design & supervision</div>
+        </div>
+
+        <div class="table-row">
+          <div>Kings Asare</div>
+          <div>Quantity Surveyor</div>
+          <div>Cost control & valuations</div>
+        </div>
+
+        <div class="table-row">
+          <div>Francis Adomako</div>
+          <div>Civil Engineer</div>
+          <div>Structural & site works</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METHODOLOGY -->
+    <section id="method" class="fade">
+      <h2>Methodology & Quality Assurance</h2>
+
+      <div class="timeline">
+        <div class="step">
+          <h3>Needs Assessment</h3>
+          <p>Feasibility studies and risk evaluations.</p>
+        </div>
+
+        <div class="step">
+          <h3>Strategic Planning</h3>
+          <p>Milestones, budgets and compliance alignment.</p>
+        </div>
+
+        <div class="step">
+          <h3>Execution & Supervision</h3>
+          <p>Daily site monitoring and quality control.</p>
+        </div>
+
+        <div class="step">
+          <h3>Monitoring & Evaluation</h3>
+          <p>KPI tracking and audits.</p>
+        </div>
+
+        <div class="step">
+          <h3>Handover</h3>
+          <p>Documentation and post-project advisory.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="fade">
+      <h2>Projects Delivered</h2>
+
+      <div class="grid">
+        <div class="card">Signature Building – Accra</div>
+        <div class="card">Impact Building – KNUST</div>
+        <div class="card">Obuasi Road Expansion</div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="fade">
+      <h2>Contact</h2>
+      <p>Email: structapro@gmail.com</p>
+      <p>Phone: +233 20 085 9909</p>
+      <p>www.structapro.com</p>
+    </section>
+
+    <footer>© 2026 StructaPro Construction Advisory</footer>
+
+    <!-- ========================================
+     JAVASCRIPT (smooth animations)
+======================================== -->
+    <script>
+      const faders = document.querySelectorAll(".fade");
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      });
+
+      faders.forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

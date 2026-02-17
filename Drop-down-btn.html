@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dropdown Button Example</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", system-ui, sans-serif;
+      }
+
+      body {
+        background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 800px;
+        width: 100%;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        padding: 60px;
+        text-align: center;
+      }
+
+      h1 {
+        color: #1e293b;
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      p {
+        color: #64748b;
+        font-size: 1.1rem;
+        line-height: 1.7;
+        margin-bottom: 40px;
+        max-width: 600px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      /* Button Styles */
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px 35px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.1rem;
+        border: none;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        position: relative;
+        z-index: 10;
+      }
+
+      .button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+      }
+
+      .button:active {
+        transform: translateY(0);
+      }
+
+      .button i {
+        font-size: 1rem;
+        transition: transform 0.3s ease;
+      }
+
+      .button.active i {
+        transform: rotate(180deg);
+      }
+
+      /* Dropdown Styles */
+      .dropdown-container {
+        position: relative;
+        display: inline-block;
+        margin-top: 20px;
+      }
+
+      .dropdown-menu {
+        position: absolute;
+        top: calc(100% + 10px);
+        left: 50%;
+        transform: translateX(-50%) translateY(-10px);
+        background: white;
+        min-width: 280px;
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        z-index: 100;
+        overflow: hidden;
+        border: 1px solid #f1f5f9;
+      }
+
+      .dropdown-menu.active {
+        opacity: 1;
+        visibility: visible;
+        transform: translateX(-50%) translateY(0);
+      }
+
+      .dropdown-header {
+        padding: 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        text-align: center;
+      }
+
+      .dropdown-header h3 {
+        font-size: 1.3rem;
+        margin-bottom: 5px;
+      }
+
+      .dropdown-header p {
+        font-size: 0.9rem;
+        opacity: 0.9;
+        margin: 0;
+      }
+
+      .dropdown-items {
+        padding: 15px 0;
+      }
+
+      .dropdown-item {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        padding: 15px 25px;
+        text-decoration: none;
+        color: #475569;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .dropdown-item:hover {
+        background: #f8fafc;
+        color: #334155;
+        border-left-color: #667eea;
+        padding-left: 30px;
+      }
+
+      .dropdown-item i {
+        width: 24px;
+        text-align: center;
+        color: #667eea;
+        font-size: 1.1rem;
+      }
+
+      .dropdown-item span {
+        font-weight: 500;
+        font-size: 1rem;
+      }
+
+      .dropdown-item .badge {
+        margin-left: auto;
+        background: #e0e7ff;
+        color: #4f46e5;
+        font-size: 0.75rem;
+        padding: 3px 10px;
+        border-radius: 20px;
+        font-weight: 600;
+      }
+
+      .dropdown-footer {
+        padding: 15px 25px;
+        background: #f8fafc;
+        text-align: center;
+        border-top: 1px solid #f1f5f9;
+      }
+
+      .dropdown-footer a {
+        color: #64748b;
+        font-size: 0.9rem;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .dropdown-footer a:hover {
+        color: #667eea;
+      }
+
+      /* Arrow indicator */
+      .dropdown-arrow {
+        position: absolute;
+        top: -6px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 12px;
+        height: 12px;
+        background: white;
+        transform: rotate(45deg);
+        box-shadow: -3px -3px 5px rgba(0, 0, 0, 0.05);
+      }
+
+      /* Instructions */
+      .instructions {
+        margin-top: 80px;
+        padding: 25px;
+        background: #f8fafc;
+        border-radius: 16px;
+        max-width: 600px;
+        text-align: left;
+      }
+
+      .instructions h3 {
+        color: #334155;
+        margin-bottom: 15px;
+        font-size: 1.3rem;
+      }
+
+      .instructions ul {
+        padding-left: 20px;
+        color: #64748b;
+      }
+
+      .instructions li {
+        margin-bottom: 10px;
+        line-height: 1.6;
+      }
+
+      .instructions code {
+        background: #e2e8f0;
+        padding: 2px 8px;
+        border-radius: 4px;
+        font-family: monospace;
+        font-size: 0.9rem;
+        color: #334155;
+      }
+
+      /* Close on click outside */
+      .dropdown-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: transparent;
+        z-index: 90;
+        display: none;
+      }
+
+      .dropdown-overlay.active {
+        display: block;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .container {
+          padding: 40px 30px;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        .dropdown-menu {
+          min-width: 250px;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .container {
+          padding: 30px 20px;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .button {
+          padding: 14px 30px;
+          font-size: 1rem;
+        }
+
+        .dropdown-menu {
+          min-width: 220px;
+          left: 50%;
+          transform: translateX(-50%) translateY(-10px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Interactive Dropdown Menu</h1>
+      <p>
+        Click the button below to see a dropdown menu with additional options
+        and features.
+      </p>
+
+      <div class="dropdown-container">
+        <!-- The Get More Button -->
+        <a class="button" id="getMoreButton">
+          <span>Get More</span>
+          <i class="fas fa-chevron-down"></i>
+        </a>
+
+        <!-- Dropdown Menu -->
+        <div class="dropdown-menu" id="dropdownMenu">
+          <div class="dropdown-arrow"></div>
+          <div class="dropdown-header">
+            <h3>More Options</h3>
+            <p>Choose from additional features</p>
+          </div>
+
+          <div class="dropdown-items">
+            <a href="chart-OG.html" class="dropdown-item">
+              <i class="fas fa-chart-line"></i>
+              <span>Original Chart</span>
+              <span class="badge">OG</span>
+            </a>
+
+            <a href="chart-advanced.html" class="dropdown-item">
+              <i class="fas fa-chart-bar"></i>
+              <span>Advanced Analytics</span>
+              <span class="badge">New</span>
+            </a>
+
+            <a href="data-export.html" class="dropdown-item">
+              <i class="fas fa-file-export"></i>
+              <span>Export Data</span>
+            </a>
+
+            <a href="custom-reports.html" class="dropdown-item">
+              <i class="fas fa-file-alt"></i>
+              <span>Custom Reports</span>
+              <span class="badge">Pro</span>
+            </a>
+
+            <a href="insights.html" class="dropdown-item">
+              <i class="fas fa-lightbulb"></i>
+              <span>AI Insights</span>
+              <span class="badge">Beta</span>
+            </a>
+          </div>
+
+          <div class="dropdown-footer">
+            <a href="all-features.html">View all features →</a>
+          </div>
+        </div>
+
+        <!-- Overlay to close dropdown when clicking outside -->
+        <div class="dropdown-overlay" id="dropdownOverlay"></div>
+      </div>
+    </div>
+
+    <div class="instructions">
+      <h3>How to Implement This Dropdown</h3>
+      <ul>
+        <li>
+          Copy the HTML structure including the button, dropdown menu, and
+          overlay
+        </li>
+        <li>Add the CSS styles to your stylesheet</li>
+        <li>Include the JavaScript code to handle click events</li>
+        <li>
+          Update the href values in dropdown items to match your actual page
+          URLs
+        </li>
+        <li>Customize colors and content to match your website's design</li>
+      </ul>
+      <p>
+        <strong>Note:</strong> The original button href
+        (<code>chart-OG.html</code>) is now the first option in the dropdown
+        menu.
+      </p>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const getMoreButton = document.getElementById("getMoreButton");
+        const dropdownMenu = document.getElementById("dropdownMenu");
+        const dropdownOverlay = document.getElementById("dropdownOverlay");
+
+        // Toggle dropdown when button is clicked
+        getMoreButton.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          const isActive = dropdownMenu.classList.contains("active");
+
+          // Close all dropdowns first
+          document.querySelectorAll(".dropdown-menu.active").forEach((menu) => {
+            menu.classList.remove("active");
+          });
+          document
+            .querySelectorAll(".dropdown-overlay.active")
+            .forEach((overlay) => {
+              overlay.classList.remove("active");
+            });
+          document.querySelectorAll(".button.active").forEach((button) => {
+            button.classList.remove("active");
+          });
+
+          // Toggle this dropdown
+          if (!isActive) {
+            dropdownMenu.classList.add("active");
+            dropdownOverlay.classList.add("active");
+            getMoreButton.classList.add("active");
+          }
+        });
+
+        // Close dropdown when clicking outside
+        dropdownOverlay.addEventListener("click", function () {
+          dropdownMenu.classList.remove("active");
+          dropdownOverlay.classList.remove("active");
+          getMoreButton.classList.remove("active");
+        });
+
+        // Close dropdown when clicking on a dropdown item
+        dropdownMenu.querySelectorAll(".dropdown-item").forEach((item) => {
+          item.addEventListener("click", function () {
+            // Optional: Add a small delay before closing to show click feedback
+            setTimeout(() => {
+              dropdownMenu.classList.remove("active");
+              dropdownOverlay.classList.remove("active");
+              getMoreButton.classList.remove("active");
+            }, 300);
+          });
+        });
+
+        // Close dropdown when pressing Escape key
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape") {
+            dropdownMenu.classList.remove("active");
+            dropdownOverlay.classList.remove("active");
+            getMoreButton.classList.remove("active");
+          }
+        });
+
+        // Close dropdown when clicking anywhere outside (alternative method)
+        document.addEventListener("click", function (e) {
+          if (
+            !dropdownMenu.contains(e.target) &&
+            !getMoreButton.contains(e.target)
+          ) {
+            dropdownMenu.classList.remove("active");
+            dropdownOverlay.classList.remove("active");
+            getMoreButton.classList.remove("active");
+          }
+        });
+
+        // Prevent dropdown from closing when clicking inside it
+        dropdownMenu.addEventListener("click", function (e) {
+          e.stopPropagation();
+        });
+      });
+    </script>
+  </body>
+</html>

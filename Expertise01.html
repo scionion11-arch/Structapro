@@ -1,0 +1,3096 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Project Manager Profile - StructaPro</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --blue-dark: #1a365d;
+        --blue-medium: #2c5282;
+        --blue-light: #4299e1;
+        --blue-soft: #ebf8ff;
+        --accent: #38b2ac;
+        --bg: #f7fafc;
+        --text: #2d3748;
+        --text-light: #718096;
+        --grid: #e2e8f0;
+        --white: #ffffff;
+        --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        --shadow-hover: 0 20px 40px rgba(0, 0, 0, 0.12);
+        --radius: 16px;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background: linear-gradient(135deg, var(--bg) 0%, #edf2f7 100%);
+        color: var(--text);
+        line-height: 1.7;
+        min-height: 100vh;
+        padding: 20px;
+        justify-self: center;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 80px;
+        max-width: 900px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        padding: 0 20px;
+      }
+
+      .section-subtitle {
+        display: inline-block;
+        background: linear-gradient(135deg, #38b2ac, #4299e1);
+        color: white;
+        padding: 10px 24px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        letter-spacing: 1.5px;
+        margin-bottom: 25px;
+        box-shadow: var(--shadow-accent);
+      }
+
+      .profile-card {
+        background: var(--white);
+        border-radius: var(--radius);
+        box-shadow: var(--shadow-hover);
+        max-width: 1200px;
+        width: 100%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .profile-header {
+        background: linear-gradient(
+          135deg,
+          var(--blue-dark),
+          var(--blue-medium)
+        );
+        color: white;
+        padding: 60px 50px 40px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .profile-header::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+        opacity: 0.2;
+      }
+
+      .header-content {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+        z-index: 2;
+      }
+
+      .title-section {
+        flex: 1;
+      }
+
+      .title-badge {
+        display: inline-block;
+        background: rgba(255, 255, 255, 0.15);
+        color: white;
+        padding: 8px 20px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-bottom: 20px;
+        backdrop-filter: blur(5px);
+      }
+
+      .title-section h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 10px;
+        letter-spacing: -0.5px;
+      }
+
+      .title-section p {
+        font-size: 1.2rem;
+        opacity: 0.9;
+      }
+
+      .avatar {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--blue-light), var(--accent));
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        font-size: 3.5rem;
+        font-weight: 700;
+        border: 5px solid rgba(255, 255, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        margin-left: 30px;
+      }
+
+      .profile-body {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 40px;
+        padding: 50px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+      }
+
+      .section-title {
+        display: flex;
+        align-items: center;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 2px solid var(--blue-soft);
+        color: var(--blue-dark);
+      }
+
+      .section-title i {
+        background: var(--blue-soft);
+        width: 40px;
+        height: 40px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        color: var(--blue-medium);
+      }
+
+      .section-title h2 {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .info-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+      }
+
+      .info-item {
+        margin-bottom: 20px;
+      }
+
+      .info-label {
+        font-weight: 600;
+        color: var(--blue-dark);
+        margin-bottom: 5px;
+        font-size: 0.95rem;
+      }
+
+      .info-value {
+        color: var(--text);
+        font-size: 1.05rem;
+      }
+
+      .info-value.highlight {
+        color: var(--blue-medium);
+        font-weight: 600;
+      }
+
+      .qualifications-list {
+        list-style: none;
+      }
+
+      .qualifications-list li {
+        margin-bottom: 15px;
+        padding-left: 25px;
+        position: relative;
+      }
+
+      .qualifications-list li::before {
+        content: "✓";
+        position: absolute;
+        left: 0;
+        color: var(--accent);
+        font-weight: bold;
+        font-size: 1.2rem;
+      }
+
+      .education-item,
+      .employment-item {
+        margin-bottom: 25px;
+        padding-bottom: 25px;
+        border-bottom: 1px solid var(--grid);
+      }
+
+      .education-item:last-child,
+      .employment-item:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .edu-year,
+      .emp-year {
+        display: inline-block;
+        background: var(--blue-soft);
+        color: var(--blue-medium);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-weight: 600;
+        font-size: 0.85rem;
+        margin-bottom: 10px;
+      }
+
+      .edu-degree,
+      .emp-position {
+        font-weight: 700;
+        color: var(--blue-dark);
+        margin-bottom: 5px;
+        font-size: 1.1rem;
+      }
+
+      .edu-institution,
+      .emp-company {
+        color: var(--text-light);
+        font-size: 1rem;
+      }
+
+      .languages {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 15px;
+      }
+
+      .language-tag {
+        background: var(--blue-soft);
+        color: var(--blue-medium);
+        padding: 8px 18px;
+        border-radius: 30px;
+        font-weight: 600;
+        font-size: 0.9rem;
+      }
+
+      .language-tag.primary {
+        background: var(--blue-medium);
+        color: white;
+      }
+
+      .profile-footer {
+        background: var(--blue-soft);
+        padding: 30px 50px;
+        text-align: center;
+        border-top: 1px solid var(--grid);
+      }
+
+      .footer-text {
+        color: var(--blue-dark);
+        font-weight: 600;
+        font-size: 1.1rem;
+      }
+
+      .structapro-logo {
+        display: inline-flex;
+        align-items: center;
+        background: linear-gradient(to right, var(--blue-dark), var(--accent));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        font-weight: 800;
+        font-size: 1.2rem;
+        margin-left: 5px;
+      }
+
+      @media (max-width: 992px) {
+        .profile-body {
+          grid-template-columns: 1fr;
+          gap: 30px;
+        }
+
+        .header-content {
+          flex-direction: column;
+          text-align: center;
+        }
+
+        .avatar {
+          margin: 30px auto 0;
+        }
+
+        .title-section h1 {
+          font-size: 2.3rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .profile-header {
+          padding: 40px 30px 30px;
+        }
+
+        .profile-body {
+          padding: 30px;
+        }
+
+        .info-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .title-section h1 {
+          font-size: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          padding: 10px;
+        }
+
+        .profile-header,
+        .profile-body,
+        .profile-footer {
+          padding: 30px 20px;
+        }
+
+        .title-section h1 {
+          font-size: 1.8rem;
+        }
+
+        .avatar {
+          width: 120px;
+          height: 120px;
+          font-size: 2.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="section-header">
+      <span class="section-subtitle">PROFILE OF TECHNICAL STAFF</span>
+    </div>
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">PROJECT MANAGEMENT</div>
+            <h1>Leif Seyra Korblah Yevugah</h1>
+            <p>PROJECT MANAGER</p>
+          </div>
+          <div class="avatar">LY</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">June 7th, 1993</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">7 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2010 - 2014</span>
+              <div class="edu-degree">
+                BSc Construction Technology and Management
+              </div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2014 - 2016</span>
+              <div class="edu-degree">MSc Construction Project Management</div>
+              <div class="edu-institution">LOUGHBOROUGH UNIVERSITY</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - Present</span>
+              <div class="emp-position">Executive Project Manager</div>
+              <div class="emp-company">
+                StructaPro Construction Advisory (International Construction
+                Consultancy)
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2016 - 2020</span>
+              <div class="emp-position">Senior Project Manager</div>
+              <div class="emp-company">Visionaire Construction Company</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2014 - 2016</span>
+              <div class="emp-position">
+                Site Engineer / Assistant Project Manager
+              </div>
+              <div class="emp-company">
+                Lavender Quill Civil Construction Company
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institute of Procurement and Supply</div>
+                <div>• Ghana Institute of Construction</div>
+                <div>• Project Management Professional (PMP)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Over 10 years of experience in managing and delivering high-rise
+                buildings in the UK; 2015-2018, Accra; 2020-2023, industrial
+                silos in Takuradi; 2024 and road infrastructure projects in
+                Accra and Kumasi; 2019-2025.
+              </li>
+              <li>
+                Extensive experience in project planning, execution, monitoring
+                and control with strong competence in contract administration,
+                cost control, risk management, quality assurance and HSE
+                compliance.
+              </li>
+              <li>
+                Demonstrated ability to lead multi-disciplinary teams and
+                coordinate with international and local consultants, contractors
+                and stakeholders.
+              </li>
+              <li>
+                Experience working on projects executed to international
+                standards with a proven record of timely and cost-effective
+                project delivery.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Japanese</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">PROJECT MANAGEMENT</div>
+            <h1>Righteous Awuah Berchie</h1>
+            <p>ASSISTANT PROJECT MANAGER</p>
+          </div>
+          <div class="avatar">RB</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">June 21, 1985</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">5 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2005 - 2008</span>
+              <div class="edu-degree">BSc Building Technology</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2010 - 2011</span>
+              <div class="edu-degree">MSc Construction Management</div>
+              <div class="edu-institution">University of Leeds</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2022 - Present</span>
+              <div class="emp-position">Assistant Project Manager</div>
+              <div class="emp-company">
+                StructaPro Construction Advisory (International Construction
+                Consultancy)
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2017 - 2022</span>
+              <div class="emp-position">Project Coordinator</div>
+              <div class="emp-company">Visionaire Construction Company</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2013 - 2017</span>
+              <div class="emp-position">Site Engineer</div>
+              <div class="emp-company">Quill Civil Construction Company</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2013 - 2013</span>
+              <div class="emp-position">Graduate Engineer</div>
+              <div class="emp-company">BuildRight Construction Ltd.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institute of Surveyors (GHIS)</div>
+                <div>• Ghana Institute of Construction (GIOC)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Assistant Project Manager with over 10 years of professional
+                experience supporting the delivery of building and
+                infrastructure projects in Ghana.
+              </li>
+              <li>
+                Skilled in project planning, supervision, and reporting with
+                competence in contract administration and quality assurance.
+              </li>
+              <li>
+                Experienced in coordinating multidisciplinary teams and ensuring
+                compliance with the Ghana Building Code and international
+                standards.
+              </li>
+              <li>
+                Strong background in construction documentation, resource
+                scheduling, and site supervision.
+              </li>
+              <li>Member of the Ghana Institute of Construction (GIOC).</li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">CONSTRUCTION SUPERVISION</div>
+            <h1>Aduse Opoku-Ware</h1>
+            <p>CLERK OF WORKS</p>
+          </div>
+          <div class="avatar">AO</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">March 15th, 1990</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">6 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education & Certifications</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2010 - 2014</span>
+              <div class="edu-degree">
+                BSc Quantity Surveying and Construction Economics
+              </div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2014 - 2016</span>
+              <div class="edu-degree">MSc Project Management</div>
+              <div class="edu-institution">University of Ghana</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2015</span>
+              <div class="edu-degree">Certified BIM Professional (CBP)</div>
+              <div class="edu-institution">Professional Certification</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2014 - Present</span>
+              <div class="emp-position">Clerk of Works</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2018 - 2022</span>
+              <div class="emp-position">Clerk of Works</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2016 - 2018</span>
+              <div class="emp-position">Project Coordinator</div>
+              <div class="emp-company">GHACEM Ltd.</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2014 - 2016</span>
+              <div class="emp-position">Assistant Project Manager</div>
+              <div class="emp-company">SCG Ghana</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Project Management Institute (PMI)</div>
+                <div>• Ghana Institute of Construction (GIOC)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Results-driven Clerk of Works with over 10 years of experience
+                in construction project monitoring and quality control,
+                leveraging modern trends and technology.
+              </li>
+              <li>
+                Proven track record of ensuring project deliverables meet
+                quality, time, and budget targets.
+              </li>
+              <li>
+                Skilled in site management, quality assurance, and stakeholder
+                coordination.
+              </li>
+              <li>
+                Expertise in Building Information Modeling (BIM) as a Certified
+                BIM Professional.
+              </li>
+              <li>
+                Strong background in quantity surveying principles applied to
+                construction supervision.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">ARCHITECTURAL SERVICES</div>
+            <h1>Darlington Kojo Payne</h1>
+            <p>SENIOR ARCHITECT</p>
+          </div>
+          <div class="avatar">DP</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">22nd July, 1988</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">6 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2006 - 2009</span>
+              <div class="edu-degree">WASSCE</div>
+              <div class="edu-institution">
+                Ghana Secondary Technical School (GSTS), Takoradi
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2010 - 2014</span>
+              <div class="edu-degree">BSc. Architecture</div>
+              <div class="edu-institution">
+                Kwame Nkrumah University of Science and Technology (KNUST)
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2015 - 2017</span>
+              <div class="edu-degree">MSc. Architecture</div>
+              <div class="edu-institution">
+                University of California, Berkeley, U.S.A.
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - Present</span>
+              <div class="emp-position">Architect</div>
+              <div class="emp-company">
+                StructaPro Construction Advisory (International Construction
+                Consultancy)
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2018 - 2020</span>
+              <div class="emp-position">Assistant Architect</div>
+              <div class="emp-company">
+                Wilkins Engineering Limited, Accra, Ghana
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2016 - 2018</span>
+              <div class="emp-position">Architect</div>
+              <div class="emp-company">ADK Consortium Ltd, Accra, Ghana</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2014 - 2016</span>
+              <div class="emp-position">Architect</div>
+              <div class="emp-company">FAS Consult Ltd.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institute of Architects (GIA)</div>
+                <div>
+                  • Certified Practising Engineer (Ghana Institution of
+                  Architects)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Over 12 years of professional experience, with more than 5
+                years' post-qualification in architectural system design and
+                supervision.
+              </li>
+              <li>
+                Proven track record in managing projects from concept through
+                commissioning, ensuring safety, sustainability, and
+                cost-effectiveness.
+              </li>
+              <li>
+                Strong knowledge of Ghana Building Code, ASHRAE standards, and
+                ISO-compliant practices.
+              </li>
+              <li>
+                Certified practising engineer under the Ghana Institution of
+                Architects (GIA).
+              </li>
+              <li>
+                International education background with MSc from University of
+                California, Berkeley.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+              <span class="language-tag">Fante</span>
+              <span class="language-tag">Ahanta</span>
+              <span class="language-tag">Portuguese</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">ARCHITECTURAL SERVICES</div>
+            <h1>Owusu Ntiamoah Nana Senior</h1>
+            <p>JUNIOR ARCHITECT</p>
+          </div>
+          <div class="avatar">ON</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">March 25th, 1990</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">4 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2006 - 2009</span>
+              <div class="edu-degree">WASSCE in Science</div>
+              <div class="edu-institution">
+                Osei Kyeretwie Senior High School (OKESS), Kumasi
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2010 - 2014</span>
+              <div class="edu-degree">BSc. Architecture</div>
+              <div class="edu-institution">KNUST, Ghana</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2016 - 2018</span>
+              <div class="edu-degree">MSc. Architecture</div>
+              <div class="edu-institution">
+                Massachusetts Institute of Technology (MIT), U.S.A.
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2021 - Present</span>
+              <div class="emp-position">
+                Designing Team Leader & Sustainability Consultant
+              </div>
+              <div class="emp-company">
+                StructaPro Construction Advisory (International Construction
+                Consultancy)
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2016 - 2020</span>
+              <div class="emp-position">Designing Team Leader</div>
+              <div class="emp-company">J & K Consulting Limited</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institute of Architects (GIA)</div>
+                <div>• Architects Registration Council of Ghana (ARC)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                9 years of practical experience in architectural design, project
+                management, and staying updated with industry trends and
+                regulations.
+              </li>
+              <li>
+                A strong portfolio showcasing completed projects across various
+                sectors.
+              </li>
+              <li>
+                Expertise in areas like residential, commercial, and sustainable
+                design.
+              </li>
+              <li>
+                Experienced in using design software like AutoCAD, Revit,
+                Lumion, and SketchUp.
+              </li>
+              <li>
+                Registered with the Architects Registration Council of Ghana
+                (ARC).
+              </li>
+              <li>
+                International education background with MSc from Massachusetts
+                Institute of Technology (MIT).
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+              <span class="language-tag">French</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">QUANTITY SURVEYING</div>
+            <h1>Asare Kings Kwame Kyere</h1>
+            <p>SENIOR QUANTITY SURVEYOR</p>
+          </div>
+          <div class="avatar">AK</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">March 22, 1988</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">6 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2003 - 2007</span>
+              <div class="edu-degree">High School Diploma</div>
+              <div class="edu-institution">
+                Kumasi High School, Kumasi, Ghana
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2007 - 2011</span>
+              <div class="edu-degree">
+                BSc Building Technology (Quantity Surveying)
+              </div>
+              <div class="edu-institution">
+                University of Cape Coast, Cape Coast, Ghana
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2012 - 2014</span>
+              <div class="edu-degree">MSc Quantity Surveying</div>
+              <div class="edu-institution">
+                Kwame Nkrumah University of Science and Technology (KNUST),
+                Kumasi, Ghana
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - Present</span>
+              <div class="emp-position">Quantity Surveyor</div>
+              <div class="emp-company">
+                StructaPro Construction Advisory, Kumasi, Ghana
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2017 - 2020</span>
+              <div class="emp-position">Senior Quantity Surveyor</div>
+              <div class="emp-company">
+                Gold Coast Surveyors Ltd., Accra, Ghana
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2014 - 2017</span>
+              <div class="emp-position">Quantity Surveyor</div>
+              <div class="emp-company">
+                Western Region Builders, Takoradi, Ghana
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2011 - 2014</span>
+              <div class="emp-position">Junior Quantity Surveyor</div>
+              <div class="emp-company">
+                National Construction Authority, Kumasi, Ghana
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institute of Surveyors (GhIS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications & Project Highlights</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                <strong
+                  >StructaPro Construction Advisory (2020-Present):</strong
+                >
+                Led cost management for a $1.5 million commercial complex
+                development, implementing cost saving measures that reduced
+                overall expenses by 18% through strategic material sourcing and
+                negotiation.
+              </li>
+              <li>
+                <strong>Gold Coast Surveyors Ltd. (2017-2020):</strong> Managed
+                quantity surveying for a major hospital expansion project,
+                overseeing budgets exceeding $3 million, conducting interim
+                valuations, and resolving contractual disputes; completed
+                project under budget by 10%.
+              </li>
+              <li>
+                <strong>Western Region Builders (2014-2017):</strong> Managed
+                coastal infrastructure projects, including port facility
+                upgrades; prepared detailed bills of quantities and monitored
+                cost variations, achieving a 25% improvement in financial
+                accuracy.
+              </li>
+              <li>
+                Over 12 years of progressive experience in quantity surveying
+                across residential, commercial, healthcare, and infrastructure
+                projects.
+              </li>
+              <li>
+                Expert in cost estimation, budget management, contract
+                administration, and value engineering.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">QUANTITY SURVEYING</div>
+            <h1>Michael Ohene</h1>
+            <p>JUNIOR QUANTITY SURVEYOR</p>
+          </div>
+          <div class="avatar">MO</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">June 3, 1986</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">5 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education & Certifications</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2006 - 2009</span>
+              <div class="edu-degree">
+                BSc. Quantity Surveying and Construction Economics
+              </div>
+              <div class="edu-institution">
+                Kwame Nkrumah University of Science and Technology (KNUST),
+                Kumasi, Ghana
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2010 - 2011</span>
+              <div class="edu-degree">Safety Certificate</div>
+              <div class="edu-institution">
+                Kumasi Technical University (KsTU), Kumasi, Ghana
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2018 - 2020</span>
+              <div class="edu-degree">MSc. Cost Engineering</div>
+              <div class="edu-institution">University of Greenwich</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2021 - Present</span>
+              <div class="emp-position">Quantity Surveyor</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2019 - 2021</span>
+              <div class="emp-position">Quantity Surveyor</div>
+              <div class="emp-company">African Land</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2014 - 2018</span>
+              <div class="emp-position">Cost Expert</div>
+              <div class="emp-company">
+                FEDEMS International Construction Company, Accra, Ghana
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2012 - 2014</span>
+              <div class="emp-position">Safety Officer</div>
+              <div class="emp-company">
+                SINO AFRICA DEV. COMPANY LTD, Accra, Ghana
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2010 - 2012</span>
+              <div class="emp-position">Quantity Surveyor</div>
+              <div class="emp-company">Justmoh Construction Limited</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>
+                  • Member, Royal Institution of Chartered Surveyors (MRICS)
+                </div>
+                <div>• Member, Ghana Institution of Surveyors (MGhIS)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                <strong>Cost Engineering:</strong> Expert in cost estimation,
+                budget monitoring, and financial risk mitigation. Practised as a
+                cost expert at FEDEMS, an international construction company in
+                Accra, Ghana, 2017-2018.
+              </li>
+              <li>
+                <strong>Quantity Surveying:</strong> Served as Quantity Surveyor
+                at African Land, a leading construction company in Ghana and
+                West Africa, from 2014-2017.
+              </li>
+              <li>
+                <strong>Global Standards:</strong> Proficient in RICS
+                professional standards and international measurement rules for
+                all works.
+              </li>
+              <li>
+                <strong>Contract Management:</strong> Strong command of FIDIC
+                and local contract forms for consultancy.
+              </li>
+              <li>
+                <strong>Health & Safety:</strong> Certified in construction
+                safety protocols, integrating risk management into financial
+                planning. Practised as a safety officer for 3 years at SINO
+                AFRICA DEV. COMPANY LTD., an international Construction and
+                Development company, in Accra, 2012-2014.
+              </li>
+              <li>
+                International education with MSc in Cost Engineering from
+                University of Greenwich.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+              <span class="language-tag">Ewe</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">ELECTRICAL SERVICES</div>
+            <h1>BOAKYE SALOMEY AFRIYIE</h1>
+            <p>SENIOR ELECTRICAL ENGINEER</p>
+          </div>
+          <div class="avatar">BS</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">November 1st, 1989</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">6 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2008 - 2011</span>
+              <div class="edu-degree">BSc Electrical Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2013 - 2014</span>
+              <div class="edu-degree">MSc Electrical Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - Present</span>
+              <div class="emp-position">Electrical Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2016 - 2019</span>
+              <div class="emp-position">Electrical Engineer</div>
+              <div class="emp-company">BEROCK CONSTRUCTION LTD</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>
+                  • Institute of Electrical and Electronics Engineers (IEEE)
+                </div>
+                <div>• Engineering Council of Ghana (EngCouncil)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Dedicated Electrical Engineer with over 10 years of experience
+                in construction and infrastructure projects in Ghana.
+              </li>
+              <li>
+                Specialises in delivering accurate electrical design,
+                installation, and maintenance solutions.
+              </li>
+              <li>
+                Expertise encompasses electrical cost management, project
+                coordination, and ensuring compliance with Ghanaian standards
+                (ECG regulations).
+              </li>
+              <li>
+                Proficient in electrical system design, load calculations, power
+                distribution, and lighting systems.
+              </li>
+              <li>
+                Strong background in both residential and commercial electrical
+                engineering projects.
+              </li>
+              <li>
+                Advanced education with both BSc and MSc in Electrical
+                Engineering from KNUST.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">ELECTRICAL SERVICES</div>
+            <h1>Adjoa Ampomaa Adjei</h1>
+            <p>JUNIOR ELECTRICAL ENGINEER</p>
+          </div>
+          <div class="avatar">AA</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">July 14th, 1992</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">5 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2010 - 2014</span>
+              <div class="edu-degree">BSc Electrical Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2016 - 2018</span>
+              <div class="edu-degree">MSc Electrical Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2021 - Present</span>
+              <div class="emp-position">Electrical Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2014 - 2018</span>
+              <div class="emp-position">Trainee Electrical Engineer</div>
+              <div class="emp-company">
+                Mega Solution Electrical Engineering Ltd
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Institution of Engineering and Technology (IET)</div>
+                <div>
+                  • Institute of Electrical and Electronics Engineers (IEEE)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Bachelor of Science in Electrical Engineering, Kwame Nkrumah
+                University of Science and Technology (KNUST), complemented by
+                MSc in Electrical Engineering.
+              </li>
+              <li>
+                Practical experience in electrical system design, installation,
+                testing, and maintenance.
+              </li>
+              <li>
+                Strong proficiency in AutoCAD, MATLAB, and electrical simulation
+                tools such as ETAP and PSpice.
+              </li>
+              <li>
+                In-depth knowledge of power distribution systems, control
+                systems, and PLC programming.
+              </li>
+              <li>
+                Ability to read, interpret, and develop electrical schematics,
+                single-line diagrams, and layout drawings.
+              </li>
+              <li>
+                Specialized training and hands-on experience through trainee
+                position at Mega Solution Electrical Engineering Ltd.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Fante</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">MECHANICAL SERVICES</div>
+            <h1>Desmond Boatey Kwao</h1>
+            <p>MECHANICAL ENGINEER</p>
+          </div>
+          <div class="avatar">DB</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">August 6th, 1980</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">5 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2003 - 2006</span>
+              <div class="edu-degree">BSc Mechanical Engineering</div>
+              <div class="edu-institution">
+                Kwame Nkrumah University of Science and Technology (KNUST),
+                Kumasi, Ghana
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2008 - 2009</span>
+              <div class="edu-degree">MSc Mechanical Engineering</div>
+              <div class="edu-institution">
+                Technical University of Munich (TUM), Munich, Germany
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2021 - Present</span>
+              <div class="emp-position">Senior Mechanical Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2017 - 2021</span>
+              <div class="emp-position">Mechanical Engineer</div>
+              <div class="emp-company">Contracta Construction-UK</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2013 - 2017</span>
+              <div class="emp-position">Assistant Mechanical Engineer</div>
+              <div class="emp-company">MegaConstruct Ltd</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2011 - 2013</span>
+              <div class="emp-position">Assistant Mechanical Engineer</div>
+              <div class="emp-company">Maverick Construction Ltd</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institution of Engineers (GhIE)</div>
+                <div>
+                  • Certified Practising Engineer (Ghana Institution of
+                  Engineers)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Over 15 years of professional experience, with more than 10
+                years post-qualification in mechanical system design and
+                supervision.
+              </li>
+              <li>
+                Specialised expertise in HVAC systems, plumbing, fire
+                protection, and energy-efficient mechanical installations.
+              </li>
+              <li>
+                Proven track record in managing projects from concept through
+                commissioning, ensuring safety, sustainability, and
+                cost-effectiveness.
+              </li>
+              <li>
+                Strong knowledge of Ghana Building Code, ASHRAE standards, and
+                ISO-compliant practices.
+              </li>
+              <li>
+                Certified practising engineer under the Ghana Institution of
+                Engineers (GhIE).
+              </li>
+              <li>
+                International education background with MSc from Technical
+                University of Munich (TUM), Germany.
+              </li>
+              <li>
+                International work experience with Contracta Construction-UK in
+                the United Kingdom.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Ga</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">GEOMATIC SERVICES</div>
+            <h1>Nana Benyi Acquah</h1>
+            <p>SENIOR GEOMATIC ENGINEER</p>
+          </div>
+          <div class="avatar">NB</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">May 6th, 1986</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">6 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2005 - 2007</span>
+              <div class="edu-degree">HND Surveying and Mapping</div>
+              <div class="edu-institution">
+                Ghana School of Surveying and Mapping (GSSM)
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2008 - 2012</span>
+              <div class="edu-degree">BSc Geomatic/Geodetic Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2015 - 2017</span>
+              <div class="edu-degree">MSc Remote Sensing & Photogrammetry</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - Present</span>
+              <div class="emp-position">Senior Geomatic Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2016 - 2019</span>
+              <div class="emp-position">Geomatic/Geodetic Engineer</div>
+              <div class="emp-company">Land Use and Spatial Planning</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2013 - 2016</span>
+              <div class="emp-position">
+                Assistant Geomatic/Geodetic Engineer
+              </div>
+              <div class="emp-company">Ghana Geological Survey</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institution of Engineers (GhIE)</div>
+                <div>• Ghana Institution of Surveyors (GHIS)</div>
+                <div>• Licensed Surveyors Association of Ghana (LISAG)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Geomatic/Geodetic Engineer with over a decade of experience in
+                land surveying and mapping, participating in major projects
+                across Ghana.
+              </li>
+              <li>
+                Extensive experience in field and practical surveying including
+                cadastral surveying, engineering/construction surveying, and
+                topographic mapping.
+              </li>
+              <li>
+                Office and technical expertise in data processing, mapping &
+                CAD, and technical report writing.
+              </li>
+              <li>
+                Professional and supervisory experience in site management,
+                regulatory compliance, and quality control.
+              </li>
+              <li>
+                Technical proficiency in GNSS/GPS operation, Total Station and
+                theodolite usage, levelling instruments, Drone (UAV) operation,
+                GIS and CAD software.
+              </li>
+              <li>
+                Project experience includes Mining & Mineral Resources Surveys
+                (2013-2015), digital addressing & street naming system
+                (2016-2019), and road infrastructure projects in Accra and
+                Kumasi (2019-2025).
+              </li>
+              <li>
+                Advanced education with MSc in Remote Sensing & Photogrammetry
+                from KNUST.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Ga</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">GEOMATIC SERVICES</div>
+            <h1>John Adjei Afrifa</h1>
+            <p>JUNIOR GEOMATIC ENGINEER</p>
+          </div>
+          <div class="avatar">JA</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">May 23rd, 1996</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">3 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2017 - 2021</span>
+              <div class="edu-degree">BSc Geomatic Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2022 - Present</span>
+              <div class="emp-position">Assistant Geomatic Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2021 - 2022</span>
+              <div class="emp-position">Assistant Geomatic Engineer</div>
+              <div class="emp-company">Ghana Geological Survey</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institution of Engineers (GhIE)</div>
+                <div>• Ghana Institute of Surveyors (GhIS)</div>
+                <div>• Licensed Surveyors Association of Ghana (LISAG)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                A motivated and detail-oriented Geomatic Engineer with 3 years
+                of professional experience, currently working under the direct
+                supervision of Nana Benyi Acquah, Senior Geomatic Engineer.
+              </li>
+              <li>
+                Gaining development and enhancing practical experience in
+                engineering and construction surveying, data processing, and CAD
+                mapping for major infrastructure projects in Ghana.
+              </li>
+              <li>
+                Possesses relatively high proficiency in the use of field
+                equipment (GNSS, Total Station) and office software (CAD, GIS)
+                through hands-on involvement in StructaPro's project portfolio.
+              </li>
+              <li>
+                Always eager to learn from and contribute to team objectives,
+                ensuring the accuracy of geospatial data for successful project
+                delivery.
+              </li>
+              <li>
+                Strong foundation in geomatic engineering principles with BSc
+                degree from KNUST.
+              </li>
+              <li>
+                Experience in supporting senior engineers on complex surveying
+                and mapping projects.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">GEOLOGICAL & GEOTECHNICAL SERVICES</div>
+            <h1>Jude Berchie Awuah</h1>
+            <p>JUNIOR GEOLOGICAL ENGINEER</p>
+          </div>
+          <div class="avatar">JA</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">April 10th, 1989</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">4 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2007 - 2010</span>
+              <div class="edu-degree">High School Diploma</div>
+              <div class="edu-institution">
+                Kumasi High School, Kumasi-Ghana
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2010 - 2014</span>
+              <div class="edu-degree">BSc Geological Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2014 - 2016</span>
+              <div class="edu-degree">MSc Geotechnical Engineering</div>
+              <div class="edu-institution">
+                Heriot-Watt University, Edinburgh, Scotland
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2022 - Present</span>
+              <div class="emp-position">Geological Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - 2022</span>
+              <div class="emp-position">Assistant Geological Engineer</div>
+              <div class="emp-company">
+                XYZ Construction Limited, Takoradi, Ghana
+              </div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2017 - 2019</span>
+              <div class="emp-position">Assistant Geological Engineer</div>
+              <div class="emp-company">ABC Consult Limited, Accra-Ghana</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Geological Survey Authority (GGSA)</div>
+                <div>• Ghana Institute of Geoscientists (GhIG)</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Geological engineer with over five years of progressive
+                experience in analysing geological data and applying it to the
+                design of foundations, slopes and earthwork.
+              </li>
+              <li>
+                Strong ability to interpret field and laboratory data and
+                prepare clear technical reports, drawings, and recommendations
+                for engineers, clients, and regulatory authorities.
+              </li>
+              <li>
+                Worked as an assistant geological engineer with ABC Consult
+                Ltd., Accra, where I conducted geological and geotechnical site
+                investigations for building road and infrastructure projects and
+                also supervised in situ testing like SPT and permeability tests
+                in Accra and Kumasi from January 2017 to 2019.
+              </li>
+              <li>
+                Between March 2020 and June 2022, served as an assistant
+                geological engineer with XYZ Construction Ltd., Takoradi.
+                Assisted in geological mapping and subsurface investigations for
+                construction and mining projects in the Western and Central
+                Regions.
+              </li>
+              <li>
+                International education background with MSc in Geotechnical
+                Engineering from Heriot-Watt University in Edinburgh, Scotland.
+              </li>
+              <li>
+                Specialized knowledge in soil mechanics, rock mechanics, and
+                foundation engineering.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">CIVIL WORKS</div>
+            <h1>Francis Adomako Junior</h1>
+            <p>CIVIL ENGINEER</p>
+          </div>
+          <div class="avatar">FA</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">April 20th, 1991</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">6 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2007 - 2011</span>
+              <div class="edu-degree">BSc Civil Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2013 - 2015</span>
+              <div class="edu-degree">
+                MSc Road and Transportation Engineering
+              </div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - Present</span>
+              <div class="emp-position">Civil Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2015 - 2020</span>
+              <div class="emp-position">Junior Civil Engineer</div>
+              <div class="emp-company">ApexBuild Engineering Ltd.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institute of Engineers (GhIE)</div>
+                <div>
+                  • Institution of Engineering and Technology, Ghana (IET-GH)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Experienced civil engineer with strong expertise in structural
+                design, construction supervision and infrastructure development.
+              </li>
+              <li>
+                Extensive hands-on experience in managing site operations,
+                reinforced concrete works, earthworks and drainage systems.
+              </li>
+              <li>
+                Skilled in preparation and review of engineering drawings,
+                specifications, BOQs, technical reports and project
+                documentation.
+              </li>
+              <li>
+                Thorough knowledge of Ghana Building Code, relevant civil
+                engineering standards and construction safety regulations.
+              </li>
+              <li>
+                Strong leadership, project coordination, problem-solving and
+                stakeholder communication skills.
+              </li>
+              <li>
+                Specialized expertise in road and transportation engineering
+                with MSc degree from KNUST.
+              </li>
+              <li>
+                Experience spans over 8 years in civil engineering with
+                progressive responsibility.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+              <span class="language-tag">Spanish</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">STRUCTURAL ENGINEERING</div>
+            <h1>BAZANYEYA EZEKIEL</h1>
+            <p>STRUCTURAL ENGINEER</p>
+          </div>
+          <div class="avatar">BE</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">February 17th, 1994</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">4 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2015 - 2018</span>
+              <div class="edu-degree">BSc Structural Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2022 - Present</span>
+              <div class="emp-position">Structural Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - 2021</span>
+              <div class="emp-position">Assistant Structural Engineer</div>
+              <div class="emp-company">Y NEAT SERVICES</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institute of Engineers (GhIE)</div>
+                <div>
+                  • Certified Practising Engineer (Ghana Institution of
+                  Engineers)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Five (5) years of professional experience in handling small to
+                medium structural design projects.
+              </li>
+              <li>
+                Specialised expertise in basic knowledge of structural analysis,
+                load calculations, and material properties.
+              </li>
+              <li>
+                Coordinated with architects and contractors in preparing
+                detailed reports.
+              </li>
+              <li>Strong knowledge of the Ghana Building Code.</li>
+              <li>
+                Certified practising engineer under the Ghana Institution of
+                Engineers (GhIE).
+              </li>
+              <li>
+                Proficient in structural design software and calculation
+                methodologies for reinforced concrete and steel structures.
+              </li>
+              <li>
+                Experience in foundation design, beam and column design, and
+                structural detailing.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Kusaal</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">STRUCTURAL ENGINEERING</div>
+            <h1>Kwabena Sagoe</h1>
+            <p>ASSISTANT STRUCTURAL ENGINEER</p>
+          </div>
+          <div class="avatar">KS</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">August 20th, 1990</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">5 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2005 - 2007</span>
+              <div class="edu-degree">High School Diploma</div>
+              <div class="edu-institution">
+                Ghana Secondary Technical School
+              </div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2008 - 2011</span>
+              <div class="edu-degree">BSc Civil Engineering</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2012 - 2013</span>
+              <div class="edu-degree">MSc Structural Engineering</div>
+              <div class="edu-institution">
+                University Of Oxford, Oxford, England, UK
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2021 - Present</span>
+              <div class="emp-position">Structural Engineer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2021 - 2022</span>
+              <div class="emp-position">Assistant Structural Engineer</div>
+              <div class="emp-company">Justmoh Construction Ltd., Takoradi</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2018 - 2020</span>
+              <div class="emp-position">Assistant Structural Engineer</div>
+              <div class="emp-company">Attachy Construction Ltd., Kumasi</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2017 - 2018</span>
+              <div class="emp-position">Civil Engineer</div>
+              <div class="emp-company">
+                Attachy Construction Limited, Kumasi, Ghana
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>• Ghana Institute of Engineers (GhIE)</div>
+                <div>
+                  • Certified Practising Structural Engineer (Ghana Institution
+                  of Engineers)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Structural Engineer with over six years of progressive
+                experience, with more than two years in structural design,
+                analysis and project management.
+              </li>
+              <li>
+                Complemented by continuous professional development and
+                proficiency in structural design software (e.g., AutoCAD, STAAD,
+                ETABS).
+              </li>
+              <li>
+                Certified practising structural engineer under the Ghana
+                Institution of Engineers (GhIE).
+              </li>
+              <li>
+                Worked as an assistant structural engineer with Attachy
+                construction Ltd., Kumasi, where I worked on multi-storey
+                residential buildings, office complexes, and institutional
+                facilities in Accra and Kumasi from January 2018 to 2020.
+              </li>
+              <li>
+                Between May 2021 and August 2022, served as an assistant
+                structural engineer with Justmoh Construction Ltd., Takoradi, on
+                both building and infrastructure projects, including hospitals,
+                schools, and drainage systems in the Western and Central
+                Regions.
+              </li>
+              <li>
+                International education background with MSc in Structural
+                Engineering from the University of Oxford, England, UK.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <div class="profile-card">
+      <div class="profile-header">
+        <div class="header-content">
+          <div class="title-section">
+            <div class="title-badge">HEALTH AND SAFETY</div>
+            <h1>Abena Frimpomaa</h1>
+            <p>HEALTH AND SAFETY OFFICER</p>
+          </div>
+          <div class="avatar">AF</div>
+        </div>
+      </div>
+
+      <div class="profile-body">
+        <div class="left-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-user"></i>
+              <h2>Personal Details</h2>
+            </div>
+            <div class="info-grid">
+              <div class="info-item">
+                <div class="info-label">Date of Birth</div>
+                <div class="info-value highlight">March 15th, 1992</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Years with Consultancy</div>
+                <div class="info-value highlight">6 years</div>
+              </div>
+              <div class="info-item">
+                <div class="info-label">Nationality</div>
+                <div class="info-value highlight">Ghanaian</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-graduation-cap"></i>
+              <h2>Education</h2>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2009 - 2012</span>
+              <div class="edu-degree">BSc Environmental Science</div>
+              <div class="edu-institution">KNUST</div>
+            </div>
+            <div class="education-item">
+              <span class="edu-year">2014 - 2015</span>
+              <div class="edu-degree">MSc Occupational Health and Safety</div>
+              <div class="edu-institution">University of Ghana</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-briefcase"></i>
+              <h2>Employment Records</h2>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2020 - Present</span>
+              <div class="emp-position">Senior Health and Safety Officer</div>
+              <div class="emp-company">StructaPro Construction Advisory</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2017 - 2020</span>
+              <div class="emp-position">Health and Safety Officer</div>
+              <div class="emp-company">Contracta Construction-UK</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2016 - 2017</span>
+              <div class="emp-position">
+                Assistant Health and Safety Officer
+              </div>
+              <div class="emp-company">MegaConstruct Ltd</div>
+            </div>
+            <div class="employment-item">
+              <span class="emp-year">2012 - 2013</span>
+              <div class="emp-position">
+                Assistant Health and Safety Officer
+              </div>
+              <div class="emp-company">Maverick Construction Ltd</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="right-column">
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-certificate"></i>
+              <h2>Professional Membership</h2>
+            </div>
+            <div class="info-item">
+              <div class="info-value">
+                <div>
+                  • Institution of Occupational Safety and Health (IOSH)
+                </div>
+                <div>• General Inspection Safety System (GISS)</div>
+                <div>
+                  • Ghana Institute of Safety and Environmental Professionals
+                  (GhISEP)
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-star"></i>
+              <h2>Key Qualifications</h2>
+            </div>
+            <ul class="qualifications-list">
+              <li>
+                Health and Safety Professional with 8+ years of experience in
+                construction, specialising in risk management, safety training,
+                and compliance.
+              </li>
+              <li>
+                Proven track record of improving safety performance and reducing
+                incidents across diverse construction projects.
+              </li>
+              <li>
+                Expertise in developing and implementing comprehensive health
+                and safety management systems for construction sites.
+              </li>
+              <li>
+                Skilled in conducting risk assessments, safety audits, incident
+                investigations, and emergency response planning.
+              </li>
+              <li>
+                Experienced in delivering safety training programs and toolbox
+                talks for construction personnel at all levels.
+              </li>
+              <li>
+                International work experience with Contracta Construction-UK in
+                the United Kingdom.
+              </li>
+              <li>
+                Advanced education with MSc in Occupational Health and Safety
+                from University of Ghana.
+              </li>
+            </ul>
+          </div>
+
+          <div class="section">
+            <div class="section-title">
+              <i class="fas fa-language"></i>
+              <h2>Languages</h2>
+            </div>
+            <div class="languages">
+              <span class="language-tag primary">English</span>
+              <span class="language-tag">Twi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="profile-footer">
+        <div class="footer-text">
+          Professional Profile •
+          <span class="structapro-logo">STRUCTAPRO</span> Construction Advisory
+        </div>
+      </div>
+    </div>
+    <br />
+
+    <script>
+      // Add subtle animation to profile card on load
+      document.addEventListener("DOMContentLoaded", function () {
+        const profileCard = document.querySelector(".profile-card");
+        profileCard.style.opacity = "0";
+        profileCard.style.transform = "translateY(20px)";
+
+        setTimeout(() => {
+          profileCard.style.transition =
+            "opacity 0.8s ease, transform 0.8s ease";
+          profileCard.style.opacity = "1";
+          profileCard.style.transform = "translateY(0)";
+        }, 100);
+
+        // Add hover effect to qualifications items
+        const qualificationItems = document.querySelectorAll(
+          ".qualifications-list li",
+        );
+        qualificationItems.forEach((item) => {
+          item.addEventListener("mouseenter", function () {
+            this.style.transform = "translateX(5px)";
+            this.style.transition = "transform 0.3s ease";
+          });
+
+          item.addEventListener("mouseleave", function () {
+            this.style.transform = "translateX(0)";
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

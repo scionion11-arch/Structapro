@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MVP - Color Planes Design</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg-body: #f8fafc;
+        --text-dark: #1e293b;
+        --mission-color: #4299e1;
+        --vision-color: #9f7aea;
+        --principles-color: #38b2ac;
+        --white: #ffffff;
+        --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg-body);
+        color: var(--text-dark);
+        margin: 0;
+        padding: 40px 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      /* The 3-Column Grid matching your sketch */
+      .mvp-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+      }
+
+      .card {
+        background: var(--white);
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+        transition: var(--transition);
+        display: flex;
+        flex-direction: column;
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      .card.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Header colors based on M-V-P */
+      .card-header {
+        padding: 30px;
+        color: white;
+        text-align: center;
+        position: relative;
+      }
+
+      .mission .card-header {
+        background: linear-gradient(135deg, #4299e1, #2c5282);
+      }
+      .vision .card-header {
+        background: linear-gradient(135deg, #9f7aea, #553c9a);
+      }
+      .principles .card-header {
+        background: linear-gradient(135deg, #38b2ac, #234e52);
+      }
+
+      .card-header i {
+        font-size: 2.5rem;
+        margin-bottom: 15px;
+        display: block;
+      }
+
+      .card-body {
+        padding: 30px;
+        flex-grow: 1;
+        line-height: 1.6;
+      }
+
+      .card-body h3 {
+        margin-top: 0;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      .quote {
+        font-style: italic;
+        border-left: 4px solid #ddd;
+        padding-left: 15px;
+        margin-top: 20px;
+        color: #64748b;
+      }
+
+      .value-tag {
+        display: inline-block;
+        background: #f1f5f9;
+        padding: 5px 12px;
+        border-radius: 15px;
+        margin: 5px 2px;
+        font-size: 0.85rem;
+        font-weight: 600;
+      }
+
+      /* Responsive layout for mobile */
+      @media (max-width: 900px) {
+        .mvp-grid {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <h1>Strategic Foundation</h1>
+        <p>Our Mission, Vision, and Core Principles</p>
+      </div>
+
+      <div class="mvp-grid">
+        <div class="card mission">
+          <div class="card-header">
+            <i class="fas fa-bullseye"></i>
+            <h2>M</h2>
+          </div>
+          <div class="card-body">
+            <h3>Our Mission</h3>
+            <p>
+              To empower businesses through innovative technology that
+              simplifies complex challenges and enhances productivity.
+            </p>
+            <div class="quote">
+              "Making the complex simple for every business."
+            </div>
+          </div>
+        </div>
+
+        <div class="card vision">
+          <div class="card-header">
+            <i class="fas fa-eye"></i>
+            <h2>V</h2>
+          </div>
+          <div class="card-body">
+            <h3>Our Vision</h3>
+            <p>
+              To be the global leader in transformative business solutions,
+              anticipating trends and exceeding expectations.
+            </p>
+            <div class="quote">
+              "Shaping a future where technology serves humanity."
+            </div>
+          </div>
+        </div>
+
+        <div class="card principles">
+          <div class="card-header">
+            <i class="fas fa-heart"></i>
+            <h2>P</h2>
+          </div>
+          <div class="card-body">
+            <h3>Core Principles</h3>
+            <p>The values that guide our culture and decisions:</p>
+            <span class="value-tag">Collaboration</span>
+            <span class="value-tag">Innovation</span>
+            <span class="value-tag">Integrity</span>
+            <span class="value-tag">Excellence</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Animation script to reveal cards on load
+      document.addEventListener("DOMContentLoaded", () => {
+        const cards = document.querySelectorAll(".card");
+        cards.forEach((card, index) => {
+          setTimeout(
+            () => {
+              card.classList.add("visible");
+            },
+            200 * (index + 1),
+          ); // Staggered entrance
+        });
+      });
+    </script>
+  </body>
+</html>
