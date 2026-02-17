@@ -145,13 +145,13 @@
 .project-content-1 {
   padding: 40px 30px;
   flex-grow: 1;
-  background: url(KTU-01.jpeg) center/cover no-repeat;
+  background: url(KTU.jpeg) center/cover no-repeat;
 }
 
 .project-content-2 {
   padding: 40px 30px;
   flex-grow: 1;
-  background: url(KEEP.jpg) center/cover no-repeat;
+  background: url(KNUST.jpeg) center/cover no-repeat;
 }
 
 .project-title {
@@ -523,3 +523,4 @@
     font-size: 1rem;
   }
 }
+
